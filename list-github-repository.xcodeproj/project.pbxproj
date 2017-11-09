@@ -24,6 +24,10 @@
 		C3E128AA1FB4EFBE003AEB13 /* StubJSONRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128A81FB4EFBE003AEB13 /* StubJSONRepository.swift */; };
 		C3E128AD1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128AC1FB4F578003AEB13 /* StubJSONPullRequest.swift */; };
 		C3E128AE1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128AC1FB4F578003AEB13 /* StubJSONPullRequest.swift */; };
+		C3E128B21FB4F7D1003AEB13 /* JSONRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128B11FB4F7D1003AEB13 /* JSONRepository.swift */; };
+		C3E128B41FB4F999003AEB13 /* JSONPullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128B31FB4F999003AEB13 /* JSONPullRequest.swift */; };
+		C3E128B61FB4F9C4003AEB13 /* JSONHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128B51FB4F9C4003AEB13 /* JSONHead.swift */; };
+		C3E128B81FB4F9DC003AEB13 /* JSONOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E128B71FB4F9DC003AEB13 /* JSONOwner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,10 @@
 		C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = json_repository_mock.json; sourceTree = "<group>"; };
 		C3E128A81FB4EFBE003AEB13 /* StubJSONRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubJSONRepository.swift; sourceTree = "<group>"; };
 		C3E128AC1FB4F578003AEB13 /* StubJSONPullRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubJSONPullRequest.swift; sourceTree = "<group>"; };
+		C3E128B11FB4F7D1003AEB13 /* JSONRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRepository.swift; sourceTree = "<group>"; };
+		C3E128B31FB4F999003AEB13 /* JSONPullRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPullRequest.swift; sourceTree = "<group>"; };
+		C3E128B51FB4F9C4003AEB13 /* JSONHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHead.swift; sourceTree = "<group>"; };
+		C3E128B71FB4F9DC003AEB13 /* JSONOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONOwner.swift; sourceTree = "<group>"; };
 		DF658581874CD93F50C8A2A4 /* Pods_list_github_repository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_list_github_repository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE61502BA0196B152FCD7B72 /* Pods-list-github-repository.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-list-github-repository.release.xcconfig"; path = "Pods/Target Support Files/Pods-list-github-repository/Pods-list-github-repository.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +207,8 @@
 		C377394F1FB3B476007F3272 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C3E128B01FB4F7BE003AEB13 /* json */,
+				C3E128AF1FB4F7B1003AEB13 /* coreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,6 +242,24 @@
 				C3E128AC1FB4F578003AEB13 /* StubJSONPullRequest.swift */,
 			);
 			path = stub;
+			sourceTree = "<group>";
+		};
+		C3E128AF1FB4F7B1003AEB13 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coreData;
+			sourceTree = "<group>";
+		};
+		C3E128B01FB4F7BE003AEB13 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				C3E128B11FB4F7D1003AEB13 /* JSONRepository.swift */,
+				C3E128B31FB4F999003AEB13 /* JSONPullRequest.swift */,
+				C3E128B51FB4F9C4003AEB13 /* JSONHead.swift */,
+				C3E128B71FB4F9DC003AEB13 /* JSONOwner.swift */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 		D196AD5114F4490C64E296EA /* Frameworks */ = {
@@ -543,9 +571,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E128B81FB4F9DC003AEB13 /* JSONOwner.swift in Sources */,
 				C3E128AD1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */,
+				C3E128B41FB4F999003AEB13 /* JSONPullRequest.swift in Sources */,
 				C377391E1FB3B0F9007F3272 /* ViewController.swift in Sources */,
 				C377391C1FB3B0F9007F3272 /* AppDelegate.swift in Sources */,
+				C3E128B21FB4F7D1003AEB13 /* JSONRepository.swift in Sources */,
+				C3E128B61FB4F9C4003AEB13 /* JSONHead.swift in Sources */,
 				C37739241FB3B0F9007F3272 /* list_github_repository.xcdatamodeld in Sources */,
 				C3E128A91FB4EFBE003AEB13 /* StubJSONRepository.swift in Sources */,
 			);
