@@ -108,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				C377391A1FB3B0F9007F3272 /* list-github-repository */,
-				C37739321FB3B0FA007F3272 /* list-github-repositoryTests */,
-				C377393D1FB3B0FA007F3272 /* list-github-repositoryUITests */,
+				C37739321FB3B0FA007F3272 /* tests */,
+				C377393D1FB3B0FA007F3272 /* UITests */,
 				C37739191FB3B0F9007F3272 /* Products */,
 				BFA605AC2E98E3FD394A03AC /* Pods */,
 				D196AD5114F4490C64E296EA /* Frameworks */,
@@ -129,6 +129,12 @@
 		C377391A1FB3B0F9007F3272 /* list-github-repository */ = {
 			isa = PBXGroup;
 			children = (
+				C37739511FB3B483007F3272 /* Extensions */,
+				C37739501FB3B47C007F3272 /* Helper */,
+				C377394F1FB3B476007F3272 /* Model */,
+				C377394E1FB3B46D007F3272 /* View */,
+				C377394D1FB3B463007F3272 /* Controller */,
+				C377394C1FB3B45A007F3272 /* ViewModel */,
 				C377391B1FB3B0F9007F3272 /* AppDelegate.swift */,
 				C377391D1FB3B0F9007F3272 /* ViewController.swift */,
 				C377391F1FB3B0F9007F3272 /* Main.storyboard */,
@@ -140,22 +146,64 @@
 			path = "list-github-repository";
 			sourceTree = "<group>";
 		};
-		C37739321FB3B0FA007F3272 /* list-github-repositoryTests */ = {
+		C37739321FB3B0FA007F3272 /* tests */ = {
 			isa = PBXGroup;
 			children = (
 				C37739331FB3B0FA007F3272 /* list_github_repositoryTests.swift */,
 				C37739351FB3B0FA007F3272 /* Info.plist */,
 			);
-			path = "list-github-repositoryTests";
+			path = tests;
 			sourceTree = "<group>";
 		};
-		C377393D1FB3B0FA007F3272 /* list-github-repositoryUITests */ = {
+		C377393D1FB3B0FA007F3272 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */,
 				C37739401FB3B0FA007F3272 /* Info.plist */,
 			);
-			path = "list-github-repositoryUITests";
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		C377394C1FB3B45A007F3272 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C377394D1FB3B463007F3272 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C377394E1FB3B46D007F3272 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C377394F1FB3B476007F3272 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C37739501FB3B47C007F3272 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		C37739511FB3B483007F3272 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D196AD5114F4490C64E296EA /* Frameworks */ = {
@@ -636,7 +684,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "list-github-repository/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "desafio.list-github-repository";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,7 +700,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "list-github-repository/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "desafio.list-github-repository";
 				PRODUCT_NAME = "$(TARGET_NAME)";
