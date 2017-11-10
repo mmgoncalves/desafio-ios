@@ -16,6 +16,7 @@ enum RepositoryError: AppError {
     
     case parseToObject
     case saveRepositories(localizedError: String)
+    case serviceResponse(localizedError: String)
     
     var title: String {
         switch self {
@@ -23,6 +24,8 @@ enum RepositoryError: AppError {
             return "Error"
         case .saveRepositories:
             return "Error while saving"
+        case .serviceResponse:
+            return "Error request"
         }
     }
     
@@ -32,6 +35,8 @@ enum RepositoryError: AppError {
             return "Error to parse data to object"
         case .saveRepositories(let localizedError):
             return "Error description: \(localizedError)"
+        case .serviceResponse(let localizedError):
+            return "Error description: \(localizedError)"
         }
     }
 }
@@ -40,6 +45,7 @@ enum PullRequestError: AppError {
     case parseToObject
     case findRepository
     case save(localizedError: String)
+    case serviceResponse(localizedError: String)
     
     var title: String {
         switch self {
@@ -47,6 +53,8 @@ enum PullRequestError: AppError {
             return "Error"
         case .findRepository:
             return "Repository not found"
+        case .serviceResponse:
+            return "Error request"
         }
     }
     
@@ -58,6 +66,8 @@ enum PullRequestError: AppError {
             return "Error description: \(localizedError)"
         case .findRepository:
             return "Error to get repository."
+        case .serviceResponse(let localizedError):
+            return "Error description: \(localizedError)"
         }
     }
 }
