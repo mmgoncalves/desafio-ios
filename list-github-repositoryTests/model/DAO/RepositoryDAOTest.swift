@@ -46,4 +46,17 @@ class RepositoryDAOTest: XCTestCase {
         }
     }
     
+    func test_should_find_repository_by_id() {
+        RepositoryDAO.save(jsonRepositories: jsonRepositories, page: 1, inContext: context) { error in
+            XCTAssertNil(error)
+            
+            let id = self.jsonRepositories.first?.id
+            
+            let repository = RepositoryDAO.findOne(byId: id!, inContext: self.context)
+            
+            XCTAssertNotNil(repository)
+            XCTAssertEqual(repository?.id, self.jsonRepositories.first?.id)
+        }
+    }
+    
 }
