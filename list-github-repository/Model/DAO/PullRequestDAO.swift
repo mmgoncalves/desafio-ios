@@ -58,4 +58,29 @@ struct PullRequestDAO {
             })
         }
     }
+    
+    static func find(byRepositoryId repositoryId: Int64, inContext: NSManagedObjectContext) -> [PullRequestEntity]? {
+        let fetchRequest: NSFetchRequest<PullRequestEntity> = PullRequestEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "repository.id = %@", argumentArray: [repositoryId])
+        
+        do {
+            let pullRequests = try inContext.fetch(fetchRequest) as [PullRequestEntity]
+            return pullRequests
+        } catch {
+            print("Error to fetch pullRequest by repositoryId. Error description: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    static func all(inContext: NSManagedObjectContext) -> [PullRequestEntity]? {
+        let fetchRequest: NSFetchRequest<PullRequestEntity> = PullRequestEntity.fetchRequest()
+        
+        do {
+            let pullRequests = try inContext.fetch(fetchRequest) as [PullRequestEntity]
+            return pullRequests
+        } catch {
+            print("Error to fetch all pullRequests. Error description: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }

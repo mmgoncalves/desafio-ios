@@ -28,7 +28,7 @@ class PullRequestDAOTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_should_save_pullRequest() {
+    func test_should_save_and_find_pullRequest() {
         
         RepositoryDAO.save(jsonRepositories: jsonRepositories, page: 1, inContext: context) { error in
             XCTAssertNil(error)
@@ -40,6 +40,23 @@ class PullRequestDAOTest: XCTestCase {
             
             PullRequestDAO.save(jsonPullRequests: self.jsonPullRequests, repositoryId: repositoryId, inContext: self.context) { error in
                 XCTAssertNil(error)
+                
+                guard let allPullRequests = PullRequestDAO.all(inContext: self.context) else {
+                    XCTFail("allPullRequests should not be nil")
+                    return
+                }
+                
+                XCTAssertNotNil(allPullRequests)
+                XCTAssertEqual(allPullRequests.count, 1)
+                
+                guard let pullRequests = PullRequestDAO.find(byRepositoryId: repositoryId, inContext: self.context) else {
+                    XCTFail("pullRequests should not be nil")
+                    return
+                }
+                
+                XCTAssertEqual(pullRequests.count, 1)
+                XCTAssertEqual(self.jsonPullRequests.first?.id, pullRequests.first?.id)
+                XCTAssertEqual(repositoryId, pullRequests.first?.repository?.id)
             }
         }
     }
