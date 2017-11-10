@@ -6,7 +6,8 @@
 //  Copyright © 2017 Mateus Marques. All rights reserved.
 //
 
-import Foundation
+import CoreData
+@testable import list_github_repository
 
 struct StubJSONRepository {
     static func getData() -> Data {
@@ -14,4 +15,16 @@ struct StubJSONRepository {
         
         return jsonString.data(using: .utf8)!
     }
+    
+    static func getRepositories() -> [JSONRepository] {
+        let jsonData = StubJSONRepository.getData()
+        
+        do {
+            let jsonRepositoryItem = try JSONDecoder().decode(JSONRepositoryItem.self, from: jsonData)
+            return jsonRepositoryItem.items
+        } catch {
+            fatalError("Parse json to object failed. Error: \(error)")
+        }
+    }
+    
 }
