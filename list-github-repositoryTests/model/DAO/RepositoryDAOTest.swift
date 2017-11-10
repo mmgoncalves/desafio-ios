@@ -33,4 +33,17 @@ class RepositoryDAOTest: XCTestCase {
         }
     }
     
+    func test_should_find_all_repositories() {
+        
+        RepositoryDAO.save(jsonRepositories: jsonRepositories, page: 1, inContext: context) { error in
+            XCTAssertNil(error)
+            
+            let repositories = RepositoryDAO.all(inContext: self.context)
+            
+            XCTAssertNotNil(repositories)
+            XCTAssertEqual(repositories?.count, 1)
+            XCTAssertEqual(repositories?.first?.id, self.jsonRepositories.first?.id)
+        }
+    }
+    
 }

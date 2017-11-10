@@ -26,6 +26,7 @@ struct RepositoryDAO {
                 owner.login         = jsonRepository.owner.login
                 owner.avatar        = jsonRepository.owner.avatar_url
                 
+                repository.id       = jsonRepository.id
                 repository.page     = page
                 repository.name     = jsonRepository.name
                 repository.owner    = owner
@@ -37,6 +38,19 @@ struct RepositoryDAO {
             privateContext.saveSync(completion: { (error) in
                 completion(error)
             })
+        }
+    }
+    
+    static func all(inContext: NSManagedObjectContext) -> [RepositoryEntity]? {
+        
+        let fethRequest: NSFetchRequest<RepositoryEntity> = RepositoryEntity.fetchRequest()
+        
+        do {
+            let repositories = try inContext.fetch(fethRequest) as [RepositoryEntity]
+            return repositories
+        } catch {
+            print("Error to fetch all repositories. Error description: \(error.localizedDescription)")
+            return nil
         }
     }
 }
