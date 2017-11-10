@@ -36,7 +36,11 @@ struct RepositoryDAO {
             }
             
             privateContext.saveSync(completion: { (error) in
-                completion(error)
+                if let error = error {
+                    completion(RepositoryError.saveRepositories(localizedError: error.localizedDescription))
+                } else {
+                    completion(error)
+                }
             })
         }
     }
