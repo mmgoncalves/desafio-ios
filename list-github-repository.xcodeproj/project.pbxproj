@@ -10,6 +10,9 @@
 		245FBB1BF4D01587B4BCDC61 /* Pods_list_github_repositoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5869A9E0191F29867658B7F5 /* Pods_list_github_repositoryTests.framework */; };
 		82BBB5B19DD4D521F760CB03 /* Pods_list_github_repository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF658581874CD93F50C8A2A4 /* Pods_list_github_repository.framework */; };
 		8F2362F00766B7F2501D2FD2 /* Pods_list_github_repositoryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E6F9ED105FD7DE83890E62 /* Pods_list_github_repositoryUITests.framework */; };
+		C33A84321FB66FCC00788FC7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A842F1FB66FCC00788FC7 /* Route.swift */; };
+		C33A84331FB66FCC00788FC7 /* PullRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A84301FB66FCC00788FC7 /* PullRequestService.swift */; };
+		C33A84341FB66FCC00788FC7 /* RepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A84311FB66FCC00788FC7 /* RepositoryService.swift */; };
 		C35963ED1FB5244200FDE4D3 /* OwnerEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E31FB5237300FDE4D3 /* OwnerEntity+CoreDataClass.swift */; };
 		C35963EE1FB5244200FDE4D3 /* OwnerEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E11FB5237300FDE4D3 /* OwnerEntity+CoreDataProperties.swift */; };
 		C35963EF1FB5244200FDE4D3 /* PullRequestEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E21FB5237300FDE4D3 /* PullRequestEntity+CoreDataClass.swift */; };
@@ -73,6 +76,9 @@
 		7FC638D066AAF96795AA5649 /* Pods-list-github-repositoryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-list-github-repositoryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-list-github-repositoryUITests/Pods-list-github-repositoryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		85E6F9ED105FD7DE83890E62 /* Pods_list_github_repositoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_list_github_repositoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		920158201858032671DD21E5 /* Pods-list-github-repositoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-list-github-repositoryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-list-github-repositoryUITests/Pods-list-github-repositoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C33A842F1FB66FCC00788FC7 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = "list-github-repository/Network/Route.swift"; sourceTree = SOURCE_ROOT; };
+		C33A84301FB66FCC00788FC7 /* PullRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestService.swift; path = "list-github-repository/Network/PullRequestService.swift"; sourceTree = SOURCE_ROOT; };
+		C33A84311FB66FCC00788FC7 /* RepositoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryService.swift; path = "list-github-repository/Network/RepositoryService.swift"; sourceTree = SOURCE_ROOT; };
 		C35963E01FB5237300FDE4D3 /* RepositoryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RepositoryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C35963E11FB5237300FDE4D3 /* OwnerEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OwnerEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C35963E21FB5237300FDE4D3 /* PullRequestEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PullRequestEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -155,6 +161,17 @@
 				7FC638D066AAF96795AA5649 /* Pods-list-github-repositoryUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C33A842E1FB66F9500788FC7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C33A84301FB66FCC00788FC7 /* PullRequestService.swift */,
+				C33A84311FB66FCC00788FC7 /* RepositoryService.swift */,
+				C33A842F1FB66FCC00788FC7 /* Route.swift */,
+			);
+			name = Network;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		C35963F31FB524A900FDE4D3 /* OwnerEntity */ = {
@@ -261,6 +278,7 @@
 				C377394D1FB3B463007F3272 /* Controller */,
 				C377394C1FB3B45A007F3272 /* ViewModel */,
 				C377394F1FB3B476007F3272 /* Model */,
+				C33A842E1FB66F9500788FC7 /* Network */,
 				C37739501FB3B47C007F3272 /* Helper */,
 				C37739511FB3B483007F3272 /* Extensions */,
 				C37739251FB3B0F9007F3272 /* Assets.xcassets */,
@@ -699,14 +717,17 @@
 				C35964061FB5430F00FDE4D3 /* Generic.swift in Sources */,
 				C35964101FB5E7FA00FDE4D3 /* RepositoryDAO.swift in Sources */,
 				C35963F11FB5244200FDE4D3 /* RepositoryEntity+CoreDataClass.swift in Sources */,
+				C33A84321FB66FCC00788FC7 /* Route.swift in Sources */,
 				C3E128B41FB4F999003AEB13 /* JSONPullRequest.swift in Sources */,
 				C35964041FB5421300FDE4D3 /* Errors.swift in Sources */,
 				C35963F71FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift in Sources */,
 				C35963EE1FB5244200FDE4D3 /* OwnerEntity+CoreDataProperties.swift in Sources */,
 				C377391E1FB3B0F9007F3272 /* ViewController.swift in Sources */,
 				C377391C1FB3B0F9007F3272 /* AppDelegate.swift in Sources */,
+				C33A84341FB66FCC00788FC7 /* RepositoryService.swift in Sources */,
 				C3E128B21FB4F7D1003AEB13 /* JSONRepository.swift in Sources */,
 				C3E128B61FB4F9C4003AEB13 /* JSONHead.swift in Sources */,
+				C33A84331FB66FCC00788FC7 /* PullRequestService.swift in Sources */,
 				C37739241FB3B0F9007F3272 /* list_github_repository.xcdatamodeld in Sources */,
 				C35963ED1FB5244200FDE4D3 /* OwnerEntity+CoreDataClass.swift in Sources */,
 				C3E128A91FB4EFBE003AEB13 /* StubJSONRepository.swift in Sources */,
