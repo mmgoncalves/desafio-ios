@@ -9,5 +9,5 @@
 import Foundation
 
 struct JSONRepositoryItem: Codable {
-    var item: [JSONRepository]
+    var items: [JSONRepository]
 }

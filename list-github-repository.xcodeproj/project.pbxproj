@@ -27,7 +27,6 @@
 		C37739241FB3B0F9007F3272 /* list_github_repository.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C37739221FB3B0F9007F3272 /* list_github_repository.xcdatamodeld */; };
 		C37739261FB3B0F9007F3272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37739251FB3B0F9007F3272 /* Assets.xcassets */; };
 		C37739291FB3B0F9007F3272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37739271FB3B0F9007F3272 /* LaunchScreen.storyboard */; };
-		C37739341FB3B0FA007F3272 /* list_github_repositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37739331FB3B0FA007F3272 /* list_github_repositoryTests.swift */; };
 		C377393F1FB3B0FA007F3272 /* list_github_repositoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */; };
 		C3E128A61FB3EEC2003AEB13 /* json_repository_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */; };
 		C3E128A71FB3EEC2003AEB13 /* json_repository_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */; };
@@ -86,7 +85,6 @@
 		C37739281FB3B0F9007F3272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C377392A1FB3B0F9007F3272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C377392F1FB3B0FA007F3272 /* list-github-repositoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "list-github-repositoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C37739331FB3B0FA007F3272 /* list_github_repositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list_github_repositoryTests.swift; sourceTree = "<group>"; };
 		C37739351FB3B0FA007F3272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C377393A1FB3B0FA007F3272 /* list-github-repositoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "list-github-repositoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list_github_repositoryUITests.swift; sourceTree = "<group>"; };
@@ -182,8 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				C377391A1FB3B0F9007F3272 /* list-github-repository */,
-				C37739321FB3B0FA007F3272 /* tests */,
-				C377393D1FB3B0FA007F3272 /* UITests */,
+				C37739321FB3B0FA007F3272 /* list-github-repositoryTests */,
+				C377393D1FB3B0FA007F3272 /* list-github-repositoryUITests */,
 				C37739191FB3B0F9007F3272 /* Products */,
 				BFA605AC2E98E3FD394A03AC /* Pods */,
 				D196AD5114F4490C64E296EA /* Frameworks */,
@@ -220,25 +218,24 @@
 			path = "list-github-repository";
 			sourceTree = "<group>";
 		};
-		C37739321FB3B0FA007F3272 /* tests */ = {
+		C37739321FB3B0FA007F3272 /* list-github-repositoryTests */ = {
 			isa = PBXGroup;
 			children = (
 				C35963FA1FB5310A00FDE4D3 /* model */,
 				C3E128AB1FB4F558003AEB13 /* stub */,
 				C3E128A41FB3EE86003AEB13 /* mock */,
-				C37739331FB3B0FA007F3272 /* list_github_repositoryTests.swift */,
 				C37739351FB3B0FA007F3272 /* Info.plist */,
 			);
-			path = tests;
+			path = "list-github-repositoryTests";
 			sourceTree = "<group>";
 		};
-		C377393D1FB3B0FA007F3272 /* UITests */ = {
+		C377393D1FB3B0FA007F3272 /* list-github-repositoryUITests */ = {
 			isa = PBXGroup;
 			children = (
 				C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */,
 				C37739401FB3B0FA007F3272 /* Info.plist */,
 			);
-			path = UITests;
+			path = "list-github-repositoryUITests";
 			sourceTree = "<group>";
 		};
 		C377394C1FB3B45A007F3272 /* ViewModel */ = {
@@ -664,7 +661,6 @@
 			files = (
 				C3E128AE1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */,
 				C35963FC1FB5312B00FDE4D3 /* JSONRepositoryTest.swift in Sources */,
-				C37739341FB3B0FA007F3272 /* list_github_repositoryTests.swift in Sources */,
 				C3E128AA1FB4EFBE003AEB13 /* StubJSONRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
