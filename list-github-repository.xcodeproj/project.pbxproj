@@ -16,6 +16,8 @@
 		C35963F01FB5244200FDE4D3 /* PullRequestEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E41FB5237300FDE4D3 /* PullRequestEntity+CoreDataProperties.swift */; };
 		C35963F11FB5244200FDE4D3 /* RepositoryEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E01FB5237300FDE4D3 /* RepositoryEntity+CoreDataClass.swift */; };
 		C35963F21FB5244200FDE4D3 /* RepositoryEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E51FB5237300FDE4D3 /* RepositoryEntity+CoreDataProperties.swift */; };
+		C35963F71FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963F61FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift */; };
+		C35963F91FB525B000FDE4D3 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963F81FB525B000FDE4D3 /* Date+Additions.swift */; };
 		C377391C1FB3B0F9007F3272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377391B1FB3B0F9007F3272 /* AppDelegate.swift */; };
 		C377391E1FB3B0F9007F3272 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377391D1FB3B0F9007F3272 /* ViewController.swift */; };
 		C37739211FB3B0F9007F3272 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C377391F1FB3B0F9007F3272 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		C35963E31FB5237300FDE4D3 /* OwnerEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OwnerEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C35963E41FB5237300FDE4D3 /* PullRequestEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PullRequestEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C35963E51FB5237300FDE4D3 /* RepositoryEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RepositoryEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C35963F61FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Additions.swift"; sourceTree = "<group>"; };
+		C35963F81FB525B000FDE4D3 /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		C37739181FB3B0F9007F3272 /* list-github-repository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "list-github-repository.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C377391B1FB3B0F9007F3272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C377391D1FB3B0F9007F3272 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 		C37739511FB3B483007F3272 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C35963F61FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift */,
+				C35963F81FB525B000FDE4D3 /* Date+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -614,10 +620,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C35963F21FB5244200FDE4D3 /* RepositoryEntity+CoreDataProperties.swift in Sources */,
+				C35963F91FB525B000FDE4D3 /* Date+Additions.swift in Sources */,
 				C3E128B81FB4F9DC003AEB13 /* JSONOwner.swift in Sources */,
 				C3E128AD1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */,
 				C35963F11FB5244200FDE4D3 /* RepositoryEntity+CoreDataClass.swift in Sources */,
 				C3E128B41FB4F999003AEB13 /* JSONPullRequest.swift in Sources */,
+				C35963F71FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift in Sources */,
 				C35963EE1FB5244200FDE4D3 /* OwnerEntity+CoreDataProperties.swift in Sources */,
 				C377391E1FB3B0F9007F3272 /* ViewController.swift in Sources */,
 				C377391C1FB3B0F9007F3272 /* AppDelegate.swift in Sources */,
