@@ -13,6 +13,8 @@
 		C33A84321FB66FCC00788FC7 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A842F1FB66FCC00788FC7 /* Route.swift */; };
 		C33A84331FB66FCC00788FC7 /* PullRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A84301FB66FCC00788FC7 /* PullRequestService.swift */; };
 		C33A84341FB66FCC00788FC7 /* RepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A84311FB66FCC00788FC7 /* RepositoryService.swift */; };
+		C33A84361FB67ED000788FC7 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A84351FB67ED000788FC7 /* RepositoryViewModel.swift */; };
+		C33A84391FB6851E00788FC7 /* ServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A84381FB6851E00788FC7 /* ServiceDelegate.swift */; };
 		C35963ED1FB5244200FDE4D3 /* OwnerEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E31FB5237300FDE4D3 /* OwnerEntity+CoreDataClass.swift */; };
 		C35963EE1FB5244200FDE4D3 /* OwnerEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E11FB5237300FDE4D3 /* OwnerEntity+CoreDataProperties.swift */; };
 		C35963EF1FB5244200FDE4D3 /* PullRequestEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E21FB5237300FDE4D3 /* PullRequestEntity+CoreDataClass.swift */; };
@@ -79,6 +81,8 @@
 		C33A842F1FB66FCC00788FC7 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = "list-github-repository/Network/Route.swift"; sourceTree = SOURCE_ROOT; };
 		C33A84301FB66FCC00788FC7 /* PullRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestService.swift; path = "list-github-repository/Network/PullRequestService.swift"; sourceTree = SOURCE_ROOT; };
 		C33A84311FB66FCC00788FC7 /* RepositoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryService.swift; path = "list-github-repository/Network/RepositoryService.swift"; sourceTree = SOURCE_ROOT; };
+		C33A84351FB67ED000788FC7 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		C33A84381FB6851E00788FC7 /* ServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDelegate.swift; sourceTree = "<group>"; };
 		C35963E01FB5237300FDE4D3 /* RepositoryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RepositoryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C35963E11FB5237300FDE4D3 /* OwnerEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OwnerEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C35963E21FB5237300FDE4D3 /* PullRequestEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PullRequestEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -172,6 +176,14 @@
 			);
 			name = Network;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		C33A84371FB684CE00788FC7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C33A84381FB6851E00788FC7 /* ServiceDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C35963F31FB524A900FDE4D3 /* OwnerEntity */ = {
@@ -280,6 +292,7 @@
 				C377394F1FB3B476007F3272 /* Model */,
 				C33A842E1FB66F9500788FC7 /* Network */,
 				C37739501FB3B47C007F3272 /* Helper */,
+				C33A84371FB684CE00788FC7 /* Protocols */,
 				C37739511FB3B483007F3272 /* Extensions */,
 				C37739251FB3B0F9007F3272 /* Assets.xcassets */,
 				C37739271FB3B0F9007F3272 /* LaunchScreen.storyboard */,
@@ -312,6 +325,7 @@
 		C377394C1FB3B45A007F3272 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C33A84351FB67ED000788FC7 /* RepositoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -722,6 +736,7 @@
 				C35964041FB5421300FDE4D3 /* Errors.swift in Sources */,
 				C35963F71FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift in Sources */,
 				C35963EE1FB5244200FDE4D3 /* OwnerEntity+CoreDataProperties.swift in Sources */,
+				C33A84361FB67ED000788FC7 /* RepositoryViewModel.swift in Sources */,
 				C377391E1FB3B0F9007F3272 /* ViewController.swift in Sources */,
 				C377391C1FB3B0F9007F3272 /* AppDelegate.swift in Sources */,
 				C33A84341FB66FCC00788FC7 /* RepositoryService.swift in Sources */,
@@ -729,6 +744,7 @@
 				C3E128B61FB4F9C4003AEB13 /* JSONHead.swift in Sources */,
 				C33A84331FB66FCC00788FC7 /* PullRequestService.swift in Sources */,
 				C37739241FB3B0F9007F3272 /* list_github_repository.xcdatamodeld in Sources */,
+				C33A84391FB6851E00788FC7 /* ServiceDelegate.swift in Sources */,
 				C35963ED1FB5244200FDE4D3 /* OwnerEntity+CoreDataClass.swift in Sources */,
 				C3E128A91FB4EFBE003AEB13 /* StubJSONRepository.swift in Sources */,
 				C35963F01FB5244200FDE4D3 /* PullRequestEntity+CoreDataProperties.swift in Sources */,
