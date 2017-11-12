@@ -41,6 +41,8 @@
 		C37739261FB3B0F9007F3272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37739251FB3B0F9007F3272 /* Assets.xcassets */; };
 		C37739291FB3B0F9007F3272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37739271FB3B0F9007F3272 /* LaunchScreen.storyboard */; };
 		C377393F1FB3B0FA007F3272 /* list_github_repositoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */; };
+		C3A496DB1FB8F4C50029AC6F /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */; };
+		C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */; };
 		C3C456451FB7279800FCF32A /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456441FB7279800FCF32A /* RepositoryTableViewController.swift */; };
 		C3C456471FB727AC00FCF32A /* PullRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456461FB727AC00FCF32A /* PullRequestTableViewController.swift */; };
 		C3E128A61FB3EEC2003AEB13 /* json_repository_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */; };
@@ -117,6 +119,8 @@
 		C377393A1FB3B0FA007F3272 /* list-github-repositoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "list-github-repositoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list_github_repositoryUITests.swift; sourceTree = "<group>"; };
 		C37739401FB3B0FA007F3272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewCell.swift; sourceTree = "<group>"; };
 		C3C456441FB7279800FCF32A /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
 		C3C456461FB727AC00FCF32A /* PullRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewController.swift; sourceTree = "<group>"; };
 		C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = json_repository_mock.json; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 		C377394E1FB3B46D007F3272 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */,
+				C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -754,7 +760,9 @@
 			files = (
 				C3C456471FB727AC00FCF32A /* PullRequestTableViewController.swift in Sources */,
 				C35963F21FB5244200FDE4D3 /* RepositoryEntity+CoreDataProperties.swift in Sources */,
+				C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */,
 				C35964141FB6052600FDE4D3 /* PullRequestDAO.swift in Sources */,
+				C3A496DB1FB8F4C50029AC6F /* RepositoryTableViewCell.swift in Sources */,
 				C35963F91FB525B000FDE4D3 /* Date+Additions.swift in Sources */,
 				C3E128B81FB4F9DC003AEB13 /* JSONOwner.swift in Sources */,
 				C3E128AD1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */,
