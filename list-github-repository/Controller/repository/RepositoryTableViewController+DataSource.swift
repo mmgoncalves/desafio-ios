@@ -12,12 +12,15 @@ extension RepositoryTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return self.viewModel.fetchResultsController.sections?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        guard let sections = self.viewModel.fetchResultsController.sections else {
+            fatalError("FetchResultsController is empty")
+        }
+        
+        return sections[section].numberOfObjects
     }
     
     
@@ -26,6 +29,11 @@ extension RepositoryTableViewController {
             return UITableViewCell()
         }
         
+        guard let repository = self.viewModel.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
+            fatalError("FetchResultsController is empty")
+        }
+        
+        cell.configure(repository: repository)
         return cell
     }
 }
