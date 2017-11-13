@@ -11,7 +11,6 @@ import UIKit
 extension RepositoryTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return self.viewModel.fetchResultsController.sections?.count ?? 0
     }
     

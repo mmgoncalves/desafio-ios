@@ -33,8 +33,9 @@ class RepositoryViewModel {
     func initializeFetchResultsController() {
         let fetchRequest: NSFetchRequest<RepositoryEntity> = RepositoryEntity.fetchRequest()
         let sortByStars = NSSortDescriptor(key: "stars", ascending: false)
+        let sortByPage = NSSortDescriptor(key: "page", ascending: true)
         
-        fetchRequest.sortDescriptors = [sortByStars]
+        fetchRequest.sortDescriptors = [sortByStars, sortByPage]
         
         self.fetchResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,

@@ -12,6 +12,7 @@ class PullRequestViewModel {
     
     var managedObjectContext: NSManagedObjectContext!
     var pullRequests: [JSONPullRequest]?
+    private var repository: RepositoryEntity!
     
     var fetchResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var fetchResultsControllerDelegate: NSFetchedResultsControllerDelegate!
@@ -20,13 +21,17 @@ class PullRequestViewModel {
     
     required init?(repository: RepositoryEntity, context: NSManagedObjectContext) {
         self.managedObjectContext = context
-        self.fetchPullRequests(repository: repository)
+        self.repository = repository
+        self.fetchPullRequests()
     }
     
     func initializeFetchResultsController() {
         let fetchRequest: NSFetchRequest<PullRequestEntity> = PullRequestEntity.fetchRequest()
         let sortById = NSSortDescriptor(key: "id", ascending: false)
+        let predicate = NSPredicate(format: "repository.id = %@", argumentArray: [self.repository.id])
+        
         fetchRequest.sortDescriptors = [sortById]
+        fetchRequest.predicate = predicate
         
         self.fetchResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -42,9 +47,9 @@ class PullRequestViewModel {
         } catch {}
     }
     
-    private func fetchPullRequests(repository: RepositoryEntity) {
+    private func fetchPullRequests() {
         if Generic.isConnectedToNetwork() {
-            PullRequestService.makeRequest(forRepository: repository, context: self.managedObjectContext) { error in
+            PullRequestService.makeRequest(forRepository: self.repository, context: self.managedObjectContext) { error in
                 self.serviceDelegate.onFinish()
             }
         }

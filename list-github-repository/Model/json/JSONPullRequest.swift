@@ -12,7 +12,7 @@ struct JSONPullRequest: Codable {
     var url: String
     var id: Int64
     var title: String
-    var body: String
+    var body: String?
     var created_at: String
     var head: JSONHead
 }

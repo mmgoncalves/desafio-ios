@@ -22,6 +22,8 @@ class PullRequestTableViewController: UITableViewController, ServiceDelegate, NS
 
         self.viewModel.serviceDelegate = self
         self.viewModel.fetchResultsControllerDelegate = self
+        
+        self.viewModel.initializeFetchResultsController()
     }
 
     override func didReceiveMemoryWarning() {
