@@ -45,6 +45,8 @@
 		C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */; };
 		C3A496DF1FB9C4050029AC6F /* RepositoryTableViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DE1FB9C4050029AC6F /* RepositoryTableViewController+DataSource.swift */; };
 		C3A496E11FB9C41A0029AC6F /* RepositoryTableViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496E01FB9C41A0029AC6F /* RepositoryTableViewController+Delegate.swift */; };
+		C3A496E31FB9C8140029AC6F /* PullRequestTableViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496E21FB9C8140029AC6F /* PullRequestTableViewController+DataSource.swift */; };
+		C3A496E51FB9C8260029AC6F /* PullRequestTableViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496E41FB9C8260029AC6F /* PullRequestTableViewController+Delegate.swift */; };
 		C3C456451FB7279800FCF32A /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456441FB7279800FCF32A /* RepositoryTableViewController.swift */; };
 		C3C456471FB727AC00FCF32A /* PullRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456461FB727AC00FCF32A /* PullRequestTableViewController.swift */; };
 		C3E128A61FB3EEC2003AEB13 /* json_repository_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */; };
@@ -125,6 +127,8 @@
 		C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewCell.swift; sourceTree = "<group>"; };
 		C3A496DE1FB9C4050029AC6F /* RepositoryTableViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepositoryTableViewController+DataSource.swift"; sourceTree = "<group>"; };
 		C3A496E01FB9C41A0029AC6F /* RepositoryTableViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepositoryTableViewController+Delegate.swift"; sourceTree = "<group>"; };
+		C3A496E21FB9C8140029AC6F /* PullRequestTableViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PullRequestTableViewController+DataSource.swift"; sourceTree = "<group>"; };
+		C3A496E41FB9C8260029AC6F /* PullRequestTableViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PullRequestTableViewController+Delegate.swift"; sourceTree = "<group>"; };
 		C3C456441FB7279800FCF32A /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
 		C3C456461FB727AC00FCF32A /* PullRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewController.swift; sourceTree = "<group>"; };
 		C3E128A51FB3EEC2003AEB13 /* json_repository_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = json_repository_mock.json; sourceTree = "<group>"; };
@@ -345,8 +349,8 @@
 		C377394D1FB3B463007F3272 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C3C456431FB7275300FCF32A /* pullRequest */,
 				C3C456421FB7273700FCF32A /* repository */,
+				C3C456431FB7275300FCF32A /* pullRequest */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,6 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				C3C456461FB727AC00FCF32A /* PullRequestTableViewController.swift */,
+				C3A496E21FB9C8140029AC6F /* PullRequestTableViewController+DataSource.swift */,
+				C3A496E41FB9C8260029AC6F /* PullRequestTableViewController+Delegate.swift */,
 			);
 			path = pullRequest;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 			files = (
 				C3C456471FB727AC00FCF32A /* PullRequestTableViewController.swift in Sources */,
 				C35963F21FB5244200FDE4D3 /* RepositoryEntity+CoreDataProperties.swift in Sources */,
+				C3A496E51FB9C8260029AC6F /* PullRequestTableViewController+Delegate.swift in Sources */,
 				C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */,
 				C35964141FB6052600FDE4D3 /* PullRequestDAO.swift in Sources */,
 				C3A496DB1FB8F4C50029AC6F /* RepositoryTableViewCell.swift in Sources */,
@@ -779,6 +786,7 @@
 				C35964101FB5E7FA00FDE4D3 /* RepositoryDAO.swift in Sources */,
 				C35963F11FB5244200FDE4D3 /* RepositoryEntity+CoreDataClass.swift in Sources */,
 				C33A84321FB66FCC00788FC7 /* Route.swift in Sources */,
+				C3A496E31FB9C8140029AC6F /* PullRequestTableViewController+DataSource.swift in Sources */,
 				C3E128B41FB4F999003AEB13 /* JSONPullRequest.swift in Sources */,
 				C35964041FB5421300FDE4D3 /* Errors.swift in Sources */,
 				C35963F71FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift in Sources */,

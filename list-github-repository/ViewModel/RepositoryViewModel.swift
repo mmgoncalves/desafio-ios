@@ -26,7 +26,7 @@ class RepositoryViewModel {
     
     required init?(context: NSManagedObjectContext) {
         self.managedObjectContext = context
-        self.lastPage = 1
+//        self.lastPage = 1
     }
     
     func initializeFetchResultsController() {
