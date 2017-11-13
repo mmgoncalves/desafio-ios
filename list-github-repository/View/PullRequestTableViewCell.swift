@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PullRequestTableViewCell: UITableViewCell {
     
@@ -16,17 +17,22 @@ class PullRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var body: UILabel!
     
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(pullRequest: PullRequestEntity) {
+        self.author.text = pullRequest.owner?.login
+        self.title.text = pullRequest.title
+        self.body.text = pullRequest.body
+        
+        if let imageString = pullRequest.owner?.avatar {
+            let url = URL(string: imageString)
+            self.avatar.kf.setImage(with: url)
+        }
+        
+        //TODO: improve
+        self.date.text = pullRequest.createdAt?.description
     }
-
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RepositoryTableViewCell: UITableViewCell {
 
@@ -16,18 +17,20 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var stars: UILabel!
     @IBOutlet weak var forks: UILabel!
     
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(repository:RepositoryEntity) {
+        self.author.text = repository.owner.login
+        self.title.text = repository.name
+        self.stars.text = String(repository.stars)
+        self.forks.text = String(repository.forks)
+        
+        if let imageString = repository.owner.avatar {
+            let url = URL(string: imageString)
+            self.avatar.kf.setImage(with: url)
+        }
     }
-
 }
