@@ -10,6 +10,15 @@ import UIKit
 
 class RepositoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var stars: UILabel!
+    @IBOutlet weak var forks: UILabel!
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
