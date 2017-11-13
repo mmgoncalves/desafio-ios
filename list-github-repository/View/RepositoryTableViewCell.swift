@@ -33,5 +33,4 @@ class RepositoryTableViewCell: UITableViewCell {
             self.avatar.kf.setImage(with: url)
         }
     }
-
 }
