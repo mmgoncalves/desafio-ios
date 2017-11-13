@@ -31,7 +31,7 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else {
             print("Error to get selected row")

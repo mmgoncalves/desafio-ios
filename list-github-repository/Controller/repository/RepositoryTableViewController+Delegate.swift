@@ -13,6 +13,8 @@ extension RepositoryTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView.cellForRow(at: indexPath)
         cell?.selectionStyle = .none
+        
+        self.performSegue(withIdentifier: "showPullRequestsSegue", sender: nil)
     }
     
     //MARK: ServiceDelegate
