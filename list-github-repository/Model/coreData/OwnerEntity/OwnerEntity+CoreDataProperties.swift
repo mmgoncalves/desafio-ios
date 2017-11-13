@@ -2,7 +2,7 @@
 //  OwnerEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Mateus Marques on 09/11/17.
+//  Created by Mateus Marques on 13/11/17.
 //
 //
 
@@ -19,5 +19,7 @@ extension OwnerEntity {
     @NSManaged public var avatar: String?
     @NSManaged public var id: Int64
     @NSManaged public var login: String?
+    @NSManaged public var repository: RepositoryEntity?
+    @NSManaged public var pullRequest: PullRequestEntity?
 
 }

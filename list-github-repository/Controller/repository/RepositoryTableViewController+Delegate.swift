@@ -19,6 +19,7 @@ extension RepositoryTableViewController {
     
     //MARK: ServiceDelegate
     func onFinish() {
+        self.viewModel.initializeFetchResultsController()
         tableView.reloadData()
     }
 }
