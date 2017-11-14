@@ -21,7 +21,7 @@ class PullRequestTableViewController: UITableViewController, ServiceDelegate, NS
         self.viewModel = PullRequestViewModel(repository: self.repository, context: self.managedObjectContext)
 
         self.viewModel.serviceDelegate = self
-        self.viewModel.fetchResultsControllerDelegate = self
+        self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
     }
