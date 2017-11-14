@@ -37,6 +37,7 @@ class JSONRepositoryTest: XCTestCase {
             XCTAssertNotNil(jsonRepository?.full_name)
             XCTAssertNotNil(jsonRepository?.stargazers_count)
             XCTAssertNotNil(jsonRepository?.forks_count)
+            XCTAssertNotNil(jsonRepository?.description)
             XCTAssertNotNil(jsonRepository?.owner)
             
             let jsonOwner = jsonRepository?.owner
