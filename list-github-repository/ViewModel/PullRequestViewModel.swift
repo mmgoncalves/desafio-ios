@@ -8,43 +8,31 @@
 
 import CoreData
 
-class PullRequestViewModel {
+class PullRequestViewModel: BaseViewModel {
     
-    var managedObjectContext: NSManagedObjectContext!
     var pullRequests: [JSONPullRequest]?
+    var serviceDelegate: ServiceDelegate!
     private var repository: RepositoryEntity!
     
-    var fetchResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    var fetchResultsControllerDelegate: NSFetchedResultsControllerDelegate!
-    
-    var serviceDelegate: ServiceDelegate!
-    
     required init?(repository: RepositoryEntity, context: NSManagedObjectContext) {
-        self.managedObjectContext = context
+        super.init(context: context)
         self.repository = repository
         self.fetchPullRequests()
     }
     
+    required init?(context: NSManagedObjectContext) {
+        fatalError("init(context:) has not been implemented")
+    }
+    
     func initializeFetchResultsController() {
-        let fetchRequest: NSFetchRequest<PullRequestEntity> = PullRequestEntity.fetchRequest()
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = PullRequestEntity.fetchRequest()
         let sortById = NSSortDescriptor(key: "id", ascending: false)
         let predicate = NSPredicate(format: "repository.id = %@", argumentArray: [self.repository.id])
         
         fetchRequest.sortDescriptors = [sortById]
         fetchRequest.predicate = predicate
         
-        self.fetchResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: self.managedObjectContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-            ) as! NSFetchedResultsController<NSFetchRequestResult>
-        
-        self.fetchResultsController.delegate = self.fetchResultsControllerDelegate
-        
-        do {
-            try self.fetchResultsController.performFetch()
-        } catch {}
+        self.configureFetchResultsController(fetchRequest: fetchRequest)
     }
     
     private func fetchPullRequests() {
