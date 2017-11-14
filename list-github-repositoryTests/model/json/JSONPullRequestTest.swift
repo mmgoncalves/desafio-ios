@@ -33,7 +33,7 @@ class JSONPullRequestTest: XCTestCase {
             XCTAssertNotNil(jsonPullRequest.first?.title)
             XCTAssertNotNil(jsonPullRequest.first?.id)
             XCTAssertNotNil(jsonPullRequest.first?.created_at)
-            XCTAssertNotNil(jsonPullRequest.first?.url)
+            XCTAssertNotNil(jsonPullRequest.first?.html_url)
             XCTAssertNotNil(jsonPullRequest.first?.head)
         } catch {
             XCTFail("Parse json to object failed. Error description: \(error)")

@@ -2,7 +2,7 @@
 //  PullRequestEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Mateus Marques on 09/11/17.
+//  Created by Mateus Marques on 14/11/17.
 //
 //
 
@@ -20,7 +20,7 @@ extension PullRequestEntity {
     @NSManaged public var createdAt: NSDate?
     @NSManaged public var id: Int64
     @NSManaged public var title: String?
-    @NSManaged public var url: String?
+    @NSManaged public var url: String
     @NSManaged public var owner: OwnerEntity?
     @NSManaged public var repository: RepositoryEntity?
 

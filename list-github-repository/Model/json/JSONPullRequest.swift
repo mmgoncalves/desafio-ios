@@ -9,7 +9,7 @@
 import Foundation
 
 struct JSONPullRequest: Codable {
-    var url: String
+    var html_url: String
     var id: Int64
     var title: String
     var body: String?

@@ -38,7 +38,7 @@ struct PullRequestDAO {
                 owner.avatar        = jsonPR.head.user.avatar_url
                 
                 pullRequest.id      = jsonPR.id
-                pullRequest.url     = jsonPR.url
+                pullRequest.url     = jsonPR.html_url
                 pullRequest.body    = jsonPR.body
                 pullRequest.title   = jsonPR.title
                 pullRequest.owner   = owner

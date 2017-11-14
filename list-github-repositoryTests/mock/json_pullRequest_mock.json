@@ -1,6 +1,6 @@
 [
  {
- "url": "https://api.github.com/repos/ReactiveX/RxJava/pulls/5710",
+ "html_url": "https://api.github.com/repos/ReactiveX/RxJava/pulls/5710",
  "id": 151358944,
  "title": "1.x: Single.subscribe should not crash onSuccess into onError",
  "body": "Fix `Single.subscribe(Action1, Action1)` to not call `onError` if the `onSuccess` action crashes, ensuring that the `Single` protocol `onSuccess|onError` is maintained. Crashes will go into the `RxJavaHooks.onError` handler.\r\n\r\nFixes: #5237.",
