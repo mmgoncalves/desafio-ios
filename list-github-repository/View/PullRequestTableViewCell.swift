@@ -26,13 +26,11 @@ class PullRequestTableViewCell: UITableViewCell {
         self.author.text = pullRequest.owner?.login
         self.title.text = pullRequest.title
         self.body.text = pullRequest.body
+        self.date.text = pullRequest.createdAt?.shortDate
         
         if let imageString = pullRequest.owner?.avatar {
             let url = URL(string: imageString)
             self.avatar.kf.setImage(with: url)
         }
-        
-        //TODO: improve
-        self.date.text = pullRequest.createdAt?.description
     }
 }
