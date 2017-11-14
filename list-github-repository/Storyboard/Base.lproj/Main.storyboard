@@ -45,12 +45,23 @@
                                                                 <constraint firstAttribute="height" constant="80" id="7Xs-Fy-kBc"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj2-Nf-FjG">
-                                                            <rect key="frame" x="100" y="33" width="221" height="34.5"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
-                                                            <color key="textColor" red="0.35686274509803922" green="0.59607843137254901" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="90G-Hm-LBI" userLabel="Title-body Stack View">
+                                                            <rect key="frame" x="100" y="24.5" width="221" height="51"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj2-Nf-FjG">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="34.5"/>
+                                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
+                                                                    <color key="textColor" red="0.35686274509803922" green="0.59607843137254901" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="body" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iix-wz-nta" userLabel="body">
+                                                                    <rect key="frame" x="0.0" y="34.5" width="221" height="16.5"/>
+                                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                                    <color key="textColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="X8p-ef-UsA" firstAttribute="leading" secondItem="n5i-i8-6LF" secondAttribute="leading" id="dF4-jx-77W"/>
@@ -139,6 +150,7 @@
                                 <connections>
                                     <outlet property="author" destination="ADv-xo-3g4" id="oBL-jg-1CR"/>
                                     <outlet property="avatar" destination="X8p-ef-UsA" id="P3y-be-yrY"/>
+                                    <outlet property="body" destination="iix-wz-nta" id="fdN-t9-qpt"/>
                                     <outlet property="forks" destination="evJ-QC-pHq" id="9Jb-uT-LMK"/>
                                     <outlet property="stars" destination="sc1-hv-zOU" id="GTw-0N-x8l"/>
                                     <outlet property="title" destination="rj2-Nf-FjG" id="aXP-2H-wfe"/>

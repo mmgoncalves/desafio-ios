@@ -29,6 +29,7 @@ struct RepositoryDAO {
                 repository.id       = jsonRepository.id
                 repository.page     = page
                 repository.name     = jsonRepository.name
+                repository.body     = jsonRepository.description
                 repository.owner    = owner
                 repository.forks    = jsonRepository.forks_count
                 repository.stars    = jsonRepository.stargazers_count

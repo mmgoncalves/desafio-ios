@@ -17,7 +17,11 @@ struct PullRequestService {
         completion: @escaping (_ error: AppError?) -> Void)
     {
         
-        let projectName = repository.fullName
+        guard let projectName = repository.fullName else {
+            print("Repository fullName should not be nil")
+            return
+        }
+        
         
         Alamofire.request(Route.pullRequests(projectName: projectName).get, method: .get)
             .validate()

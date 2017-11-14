@@ -14,5 +14,6 @@ struct JSONRepository: Codable {
     var full_name: String
     var stargazers_count: Int64
     var forks_count: Int64
+    var description: String?
     var owner: JSONOwner
 }
