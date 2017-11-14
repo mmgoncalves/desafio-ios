@@ -22,9 +22,18 @@ extension RepositoryTableViewController {
         let numberOfSections = tableView.numberOfSections - 1
         if let items = self.viewModel.fetchResultsController.sections?[numberOfSections].numberOfObjects {
             if indexPath.row == items - 1 {
+                self.setFooterActivityIndicator()
                 self.viewModel.fetchRepositories()
             }
         }
+    }
+    
+    private func setFooterActivityIndicator() {
+        let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        ActivityIndicator.startAnimating()
+        ActivityIndicator.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = ActivityIndicator
+        self.tableView.tableFooterView?.isHidden = false
     }
     
     //MARK: ServiceDelegate
