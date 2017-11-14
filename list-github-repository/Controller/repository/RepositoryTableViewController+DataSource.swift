@@ -11,24 +11,19 @@ import UIKit
 extension RepositoryTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.viewModel.fetchResultsController.sections?.count ?? 0
+        return self.viewModel.numberOfSections
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = self.viewModel.fetchResultsController.sections else {
-            fatalError("FetchResultsController is empty")
-        }
-        
-        return sections[section].numberOfObjects
+        return self.viewModel.numberOfObjects
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath) as? RepositoryTableViewCell else {
             return UITableViewCell()
         }
         
-        guard let repository = self.viewModel.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
+        guard let repository = self.viewModel.repository(at: indexPath) else {
             fatalError("FetchResultsController is empty")
         }
         

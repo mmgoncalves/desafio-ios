@@ -8,12 +8,17 @@
 
 import CoreData
 
-class RepositoryViewModel {
+protocol FetchResultsControllerViewModel {
+    var numberOfSections: Int {get}
+    var numberOfObjects: Int {get}
+    func repository(at indexPath: IndexPath) -> RepositoryEntity?
+}
+
+class RepositoryViewModel: FetchResultsControllerViewModel {
     
     var managedObjectContext: NSManagedObjectContext!
     var serviceDelegate: ServiceDelegate!
     var lastPage: Int16 = 1
-    
     
     var fetchResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var fetchResultControllerDelegate: NSFetchedResultsControllerDelegate!
@@ -55,5 +60,27 @@ class RepositoryViewModel {
                 self.serviceDelegate.onFinish()
             }
         }
+    }
+}
+
+extension RepositoryViewModel {
+    var numberOfSections: Int {
+        get {
+            return self.fetchResultsController.sections?.count ?? 0
+        }
+    }
+    
+    var numberOfObjects: Int {
+        get {
+            return self.fetchResultsController.sections?[self.numberOfSections - 1].numberOfObjects ?? 0
+        }
+    }
+    
+    func repository(at indexPath: IndexPath) -> RepositoryEntity? {
+        guard let repository = self.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
+            return nil
+        }
+        
+        return repository
     }
 }

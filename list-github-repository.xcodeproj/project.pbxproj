@@ -41,6 +41,7 @@
 		C37739261FB3B0F9007F3272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37739251FB3B0F9007F3272 /* Assets.xcassets */; };
 		C37739291FB3B0F9007F3272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37739271FB3B0F9007F3272 /* LaunchScreen.storyboard */; };
 		C377393F1FB3B0FA007F3272 /* list_github_repositoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */; };
+		C37C05B71FBA9F0D00FDEDF0 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C05B61FBA9F0D00FDEDF0 /* UIView+Additions.swift */; };
 		C3A496DB1FB8F4C50029AC6F /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */; };
 		C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */; };
 		C3A496DF1FB9C4050029AC6F /* RepositoryTableViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DE1FB9C4050029AC6F /* RepositoryTableViewController+DataSource.swift */; };
@@ -123,6 +124,7 @@
 		C377393A1FB3B0FA007F3272 /* list-github-repositoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "list-github-repositoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C377393E1FB3B0FA007F3272 /* list_github_repositoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list_github_repositoryUITests.swift; sourceTree = "<group>"; };
 		C37739401FB3B0FA007F3272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C37C05B61FBA9F0D00FDEDF0 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewCell.swift; sourceTree = "<group>"; };
 		C3A496DE1FB9C4050029AC6F /* RepositoryTableViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepositoryTableViewController+DataSource.swift"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 			children = (
 				C35963F61FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift */,
 				C35963F81FB525B000FDE4D3 /* Date+Additions.swift */,
+				C37C05B61FBA9F0D00FDEDF0 /* UIView+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C37C05B71FBA9F0D00FDEDF0 /* UIView+Additions.swift in Sources */,
 				C3C456471FB727AC00FCF32A /* PullRequestTableViewController.swift in Sources */,
 				C35963F21FB5244200FDE4D3 /* RepositoryEntity+CoreDataProperties.swift in Sources */,
 				C3A496E51FB9C8260029AC6F /* PullRequestTableViewController+Delegate.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 extension RepositoryTableViewController {
     
@@ -30,5 +31,6 @@ extension RepositoryTableViewController {
     func onFinish() {
         self.viewModel.initializeFetchResultsController()
         tableView.reloadData()
+        self.dismissActivityIndicator()
     }
 }

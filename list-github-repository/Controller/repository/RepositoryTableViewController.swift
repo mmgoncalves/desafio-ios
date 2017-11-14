@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SVProgressHUD
 
 class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSFetchedResultsControllerDelegate {
     
@@ -25,6 +26,8 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
+        
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
     }
 
     override func didReceiveMemoryWarning() {
