@@ -12,14 +12,8 @@ class RepositoryViewModel {
     
     var managedObjectContext: NSManagedObjectContext!
     var serviceDelegate: ServiceDelegate!
-    var lastPage: Int16 {
-        get {
-            return self.lastPage
-        } set {
-           self.lastPage = newValue
-            self.fetchRepositories(forPage: self.lastPage)
-        }
-    }
+    var lastPage: Int16 = 1
+    
     
     var fetchResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var fetchResultControllerDelegate: NSFetchedResultsControllerDelegate!
@@ -27,7 +21,7 @@ class RepositoryViewModel {
     required init?(context: NSManagedObjectContext) {
         self.managedObjectContext = context
 
-        self.fetchRepositories(forPage: 1)
+        self.fetchRepositories()
     }
     
     func initializeFetchResultsController() {
@@ -51,9 +45,13 @@ class RepositoryViewModel {
         } catch {}
     }
     
-    private func fetchRepositories(forPage page: Int16) {
+    func fetchRepositories() {
         if Generic.isConnectedToNetwork() {
-            RepositoryService.makeRequest(withPage: page, context: self.managedObjectContext) { error in
+            RepositoryService.makeRequest(withPage: self.lastPage, context: self.managedObjectContext) { error in
+                if error == nil {
+                    self.lastPage += 1
+                }
+                
                 self.serviceDelegate.onFinish()
             }
         }

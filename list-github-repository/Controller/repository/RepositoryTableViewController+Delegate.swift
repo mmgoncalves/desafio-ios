@@ -17,6 +17,15 @@ extension RepositoryTableViewController {
         self.performSegue(withIdentifier: "showPullRequestsSegue", sender: nil)
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let numberOfSections = tableView.numberOfSections - 1
+        if let items = self.viewModel.fetchResultsController.sections?[numberOfSections].numberOfObjects {
+            if indexPath.row == items - 1 {
+                self.viewModel.fetchRepositories()
+            }
+        }
+    }
+    
     //MARK: ServiceDelegate
     func onFinish() {
         self.viewModel.initializeFetchResultsController()
