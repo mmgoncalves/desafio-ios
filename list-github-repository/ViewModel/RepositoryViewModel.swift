@@ -15,17 +15,16 @@ class RepositoryViewModel: BaseViewModel {
     
     required init?(context: NSManagedObjectContext) {
         super.init(context: context)
-        self.lastPage = 1
-
-        self.fetchRepositories()
+        
+        self.lastPage = RepositoryDAO.getLastPage(inContext: context)
+        
+        if self.lastPage == 1 {
+            self.fetchRepositories()
+        }
     }
     
     func initializeFetchResultsController() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = RepositoryEntity.fetchRequest()
-        let sortByStars = NSSortDescriptor(key: "stars", ascending: false)
-        let sortByPage = NSSortDescriptor(key: "page", ascending: true)
-        
-        fetchRequest.sortDescriptors = [sortByStars, sortByPage]
+        let fetchRequest = RepositoryDAO.fetchRequestDefault()
         
         self.configureFetchResultsController(fetchRequest: fetchRequest)
     }

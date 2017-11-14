@@ -42,7 +42,6 @@ extension BaseViewModel {
             return self.fetchResultsController.sections?.count ?? 0
         }
     }
-    
     var numberOfObjects: Int {
         get {
             return self.fetchResultsController.sections?[self.numberOfSections - 1].numberOfObjects ?? 0
@@ -56,4 +55,5 @@ extension BaseViewModel {
         
         return repository
     }
+    
 }

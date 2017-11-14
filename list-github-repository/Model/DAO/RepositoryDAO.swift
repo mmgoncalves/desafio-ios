@@ -71,4 +71,25 @@ struct RepositoryDAO {
             return nil
         }
     }
+    
+    static func fetchRequestDefault() -> NSFetchRequest<NSFetchRequestResult> {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = RepositoryEntity.fetchRequest()
+        let sortByStars = NSSortDescriptor(key: "stars", ascending: false)
+        let sortByPage = NSSortDescriptor(key: "page", ascending: true)
+        
+        fetchRequest.sortDescriptors = [sortByStars, sortByPage]
+        
+        return fetchRequest
+    }
+    
+    static func getLastPage(inContext: NSManagedObjectContext) -> Int16 {
+        let fetchRequest = RepositoryDAO.fetchRequestDefault()
+        
+        do {
+            let repositories = try inContext.fetch(fetchRequest) as! [RepositoryEntity]
+            return repositories.last?.page ?? 1
+        } catch {
+            return 1
+        }
+    }
 }
