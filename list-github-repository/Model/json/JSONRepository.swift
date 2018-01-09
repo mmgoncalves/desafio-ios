@@ -11,9 +11,19 @@ import Foundation
 struct JSONRepository: Codable {
     var id: Int64
     var name: String
-    var full_name: String
-    var stargazers_count: Int64
-    var forks_count: Int64
+    var fullName: String
+    var stars: Int64
+    var forks: Int64
     var description: String?
     var owner: JSONOwner
+    
+    enum CodingKeys: String, CodingKey {
+        case fullName = "full_name"
+        case forks = "forks_count"
+        case stars = "stargazers_count"
+        case id
+        case name
+        case description
+        case owner
+    }
 }

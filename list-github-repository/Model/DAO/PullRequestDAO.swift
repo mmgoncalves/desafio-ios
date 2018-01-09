@@ -35,16 +35,16 @@ struct PullRequestDAO {
                 
                 owner.id            = jsonPR.head.user.id
                 owner.login         = jsonPR.head.user.login
-                owner.avatar        = jsonPR.head.user.avatar_url
+                owner.avatar        = jsonPR.head.user.avatarUrl
                 
                 pullRequest.id      = jsonPR.id
-                pullRequest.url     = jsonPR.html_url
+                pullRequest.url     = jsonPR.url
                 pullRequest.body    = jsonPR.body
                 pullRequest.title   = jsonPR.title
                 pullRequest.owner   = owner
                 pullRequest.repository    = repository
                 
-                if let date = Date.from(dateString: jsonPR.created_at) {
+                if let date = Date.from(dateString: jsonPR.createdAt) {
                     pullRequest.createdAt = date as NSDate
                 }
             }

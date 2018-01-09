@@ -11,5 +11,11 @@ import Foundation
 struct JSONOwner: Codable {
     var login: String
     var id: Int64
-    var avatar_url: String
+    var avatarUrl: String
+    
+    enum CodingKeys: String, CodingKey {
+        case avatarUrl = "avatar_url"
+        case login
+        case id
+    }
 }

@@ -9,10 +9,19 @@
 import Foundation
 
 struct JSONPullRequest: Codable {
-    var html_url: String
+    var url: String
     var id: Int64
     var title: String
     var body: String?
-    var created_at: String
+    var createdAt: String
     var head: JSONHead
+    
+    enum CodingKeys: String, CodingKey {
+        case url = "html_url"
+        case createdAt = "created_at"
+        case id
+        case title
+        case body
+        case head
+    }
 }

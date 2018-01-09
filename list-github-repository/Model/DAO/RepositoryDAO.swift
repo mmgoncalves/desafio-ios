@@ -24,16 +24,16 @@ struct RepositoryDAO {
                 
                 owner.id            = jsonRepository.owner.id
                 owner.login         = jsonRepository.owner.login
-                owner.avatar        = jsonRepository.owner.avatar_url
+                owner.avatar        = jsonRepository.owner.avatarUrl
                 
                 repository.id       = jsonRepository.id
                 repository.page     = page
                 repository.name     = jsonRepository.name
                 repository.body     = jsonRepository.description
                 repository.owner    = owner
-                repository.forks    = jsonRepository.forks_count
-                repository.stars    = jsonRepository.stargazers_count
-                repository.fullName = jsonRepository.full_name
+                repository.forks    = jsonRepository.forks
+                repository.stars    = jsonRepository.stars
+                repository.fullName = jsonRepository.fullName
             }
             
             privateContext.saveSync(completion: { (error) in
