@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:list-github-repository/Model/coreData/OwnerEntity/OwnerEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:list-github-repository.xcodeproj">
    </FileRef>
    <FileRef

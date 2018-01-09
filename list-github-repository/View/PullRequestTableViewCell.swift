@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class PullRequestTableViewCell: UITableViewCell {
     
@@ -27,10 +26,6 @@ class PullRequestTableViewCell: UITableViewCell {
         self.title.text = pullRequest.title
         self.body.text = pullRequest.body
         self.date.text = pullRequest.createdAt?.shortDate
-        
-        if let imageString = pullRequest.owner?.avatar {
-            let url = URL(string: imageString)
-            self.avatar.kf.setImage(with: url)
-        }
+        self.avatar.downloadImage(byString: pullRequest.owner?.avatar)
     }
 }

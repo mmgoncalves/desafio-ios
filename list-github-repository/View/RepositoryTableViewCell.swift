@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class RepositoryTableViewCell: UITableViewCell {
 
@@ -29,10 +28,6 @@ class RepositoryTableViewCell: UITableViewCell {
         self.body.text = repository.body
         self.stars.text = String(repository.stars)
         self.forks.text = String(repository.forks)
-        
-        if let imageString = repository.owner?.avatar {
-            let url = URL(string: imageString)
-            self.avatar.kf.setImage(with: url)
-        }
+        self.avatar.downloadImage(byString: repository.owner?.avatar)
     }
 }
