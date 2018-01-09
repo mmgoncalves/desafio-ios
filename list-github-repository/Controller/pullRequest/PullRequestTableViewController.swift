@@ -13,13 +13,14 @@ class PullRequestTableViewController: UITableViewController, ServiceDelegate, NS
     
     var managedObjectContext: NSManagedObjectContext!
     var repository: RepositoryEntity!
+    
     var viewModel: PullRequestViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViewModel()
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
     }
 
     func setupViewModel() {

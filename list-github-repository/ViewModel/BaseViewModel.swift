@@ -8,7 +8,7 @@
 
 import CoreData
 
-class BaseViewModel: FetchResultsControllerViewModel {
+class BaseViewModel: GenericViewModel {
     
     var managedObjectContext: NSManagedObjectContext!
     
@@ -18,6 +18,8 @@ class BaseViewModel: FetchResultsControllerViewModel {
     required init?(context: NSManagedObjectContext) {
         self.managedObjectContext = context
     }
+    
+    func fetchRequest() { }
     
     func configureFetchResultsController(fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
         
@@ -34,26 +36,21 @@ class BaseViewModel: FetchResultsControllerViewModel {
             try self.fetchResultsController.performFetch()
         } catch {}
     }
-}
-
-extension BaseViewModel {
-    var numberOfSections: Int {
-        get {
-            return self.fetchResultsController.sections?.count ?? 0
-        }
-    }
-    var numberOfObjects: Int {
-        get {
-            return self.fetchResultsController.sections?[self.numberOfSections - 1].numberOfObjects ?? 0
-        }
+    
+    func numberOfRows() -> Int {
+        let sections = self.numberOfSections()
+        return self.fetchResultsController.sections?[sections - 1].numberOfObjects ?? 0
     }
     
-    func repository(at indexPath: IndexPath) -> RepositoryEntity? {
+    func numberOfSections() -> Int {
+        return self.fetchResultsController.sections?.count ?? 0
+    }
+    
+    func getRepository(atIndexPath indexPath: IndexPath) -> RepositoryEntity? {
         guard let repository = self.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
             return nil
         }
         
         return repository
     }
-    
 }

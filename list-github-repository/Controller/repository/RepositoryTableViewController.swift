@@ -19,7 +19,8 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         super.viewDidLoad()
         
         setupViewModel()
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
+        
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
     }
 
     func setupViewModel() {
@@ -31,6 +32,19 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
+        
+        setupTableViewDataSource()
+        setupTableViewDelegate()
+    }
+    
+    func setupTableViewDelegate() {
+        let delegate = RepositoryDelegate(viewModel: viewModel, tableView: tableView)
+        tableView.delegate = delegate
+    }
+    
+    func setupTableViewDataSource() {
+        let dataSource = RepositoryDataSource(viewModel: viewModel)
+        tableView.dataSource = dataSource
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +65,13 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         
         destinationVC.managedObjectContext = self.managedObjectContext
         destinationVC.repository = repository
+    }
+    
+    //MARK: ServiceDelegate
+    func onFinish() {
+        self.viewModel.initializeFetchResultsController()
+        tableView.reloadData()
+        self.dismissActivityIndicator()
     }
 
 }
