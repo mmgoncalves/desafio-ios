@@ -18,6 +18,7 @@
 		C33A843B1FB68AA700788FC7 /* PullRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A843A1FB68AA700788FC7 /* PullRequestViewModel.swift */; };
 		C34CBA6C1FBB414B0050E61B /* NSDate+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34CBA6B1FBB414B0050E61B /* NSDate+Additions.swift */; };
 		C3554A8720050605006B6864 /* UIImageVIew+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3554A8620050605006B6864 /* UIImageVIew+Additions.swift */; };
+		C3554A912005540E006B6864 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3554A902005540E006B6864 /* ReusableIdentifier.swift */; };
 		C35963ED1FB5244200FDE4D3 /* OwnerEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E31FB5237300FDE4D3 /* OwnerEntity+CoreDataClass.swift */; };
 		C35963EE1FB5244200FDE4D3 /* OwnerEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E11FB5237300FDE4D3 /* OwnerEntity+CoreDataProperties.swift */; };
 		C35963EF1FB5244200FDE4D3 /* PullRequestEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35963E21FB5237300FDE4D3 /* PullRequestEntity+CoreDataClass.swift */; };
@@ -99,6 +100,7 @@
 		C33A843A1FB68AA700788FC7 /* PullRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewModel.swift; sourceTree = "<group>"; };
 		C34CBA6B1FBB414B0050E61B /* NSDate+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Additions.swift"; sourceTree = "<group>"; };
 		C3554A8620050605006B6864 /* UIImageVIew+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageVIew+Additions.swift"; sourceTree = "<group>"; };
+		C3554A902005540E006B6864 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
 		C35963E01FB5237300FDE4D3 /* RepositoryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RepositoryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C35963E11FB5237300FDE4D3 /* OwnerEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OwnerEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C35963E21FB5237300FDE4D3 /* PullRequestEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PullRequestEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				C33A84381FB6851E00788FC7 /* ServiceDelegate.swift */,
 				C37C05B81FBAA19400FDEDF0 /* FetchResultsControllerViewModel.swift */,
+				C3554A902005540E006B6864 /* ReusableIdentifier.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				C3E128A91FB4EFBE003AEB13 /* StubJSONRepository.swift in Sources */,
 				C35963F01FB5244200FDE4D3 /* PullRequestEntity+CoreDataProperties.swift in Sources */,
 				C35963EF1FB5244200FDE4D3 /* PullRequestEntity+CoreDataClass.swift in Sources */,
+				C3554A912005540E006B6864 /* ReusableIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

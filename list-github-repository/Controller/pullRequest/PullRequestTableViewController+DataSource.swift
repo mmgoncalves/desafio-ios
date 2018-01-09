@@ -24,7 +24,7 @@ extension PullRequestTableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PullRequestCell", for: indexPath) as? PullRequestTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PullRequestTableViewCell.reuseIdentifier, for: indexPath) as? PullRequestTableViewCell else {
             return UITableViewCell()
         }
         

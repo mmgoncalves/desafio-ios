@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepositoryTableViewCell: UITableViewCell {
+class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier {
 
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var author: UILabel!
@@ -19,7 +19,7 @@ class RepositoryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     func configure(repository:RepositoryEntity) {

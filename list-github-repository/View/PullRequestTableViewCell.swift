@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PullRequestTableViewCell: UITableViewCell {
+class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier {
     
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var author: UILabel!
