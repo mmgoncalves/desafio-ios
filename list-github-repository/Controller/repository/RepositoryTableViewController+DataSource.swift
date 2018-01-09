@@ -20,7 +20,7 @@ extension RepositoryTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.reuseIdentifier, for: indexPath) as? RepositoryTableViewCell else {
-            return UITableViewCell()
+            fatalError("Error to cast RepositoryTableViewCell")
         }
         
         guard let repository = self.viewModel.repository(at: indexPath) else {

@@ -22,10 +22,9 @@ extension PullRequestTableViewController {
         return sections[section].numberOfObjects
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PullRequestTableViewCell.reuseIdentifier, for: indexPath) as? PullRequestTableViewCell else {
-            return UITableViewCell()
+            fatalError("Error to cast PullRequestTableViewCell")
         }
         
         guard let pullRequest = self.viewModel.fetchResultsController.object(at: indexPath) as? PullRequestEntity else {
