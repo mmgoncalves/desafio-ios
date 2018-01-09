@@ -12,6 +12,27 @@ protocol AppError: LocalizedError {
     var title: String {get}
 }
 
+enum GenericError: AppError {
+    case cellNotSelected
+    case objectEmpty
+    
+    var title: String {
+        switch self {
+        case .cellNotSelected, .objectEmpty:
+            return "Error"
+        }
+    }
+    
+    var localizedDescription: String {
+        switch self {
+        case .cellNotSelected:
+            return "You need select a item."
+        case .objectEmpty:
+            return "The item requred is empty."
+        }
+    }
+}
+
 enum RepositoryError: AppError {
     
     case parseToObject

@@ -23,4 +23,20 @@ extension UIViewController {
     func dismissActivityIndicator() {
         SVProgressHUD.dismiss()
     }
+    
+    func showMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(closeAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showMessage(appError: AppError) {
+        let alert = UIAlertController(title: appError.title, message: appError.localizedDescription, preferredStyle: .alert)
+        let closeAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(closeAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }

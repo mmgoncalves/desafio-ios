@@ -35,12 +35,12 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else {
-            print("Error to get selected row")
+            self.showMessage(appError: GenericError.cellNotSelected)
             return
         }
         
         guard let repository = self.viewModel.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
-            print("Error to get repository")
+            self.showMessage(appError: GenericError.objectEmpty)
             return
         }
         
