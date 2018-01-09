@@ -18,21 +18,19 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViewModel()
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
+    }
+
+    func setupViewModel() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.managedObjectContext = appDelegate?.persistentContainer.viewContext
-
+        
         self.viewModel = RepositoryViewModel(context: self.managedObjectContext)
         self.viewModel.serviceDelegate = self
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
-        
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

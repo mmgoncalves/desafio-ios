@@ -18,19 +18,17 @@ class PullRequestTableViewController: UITableViewController, ServiceDelegate, NS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel = PullRequestViewModel(repository: self.repository, context: self.managedObjectContext)
+        setupViewModel()
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
+    }
 
+    func setupViewModel() {
+        self.viewModel = PullRequestViewModel(repository: self.repository, context: self.managedObjectContext)
+        
         self.viewModel.serviceDelegate = self
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
-        
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfObjects)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
