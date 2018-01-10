@@ -19,6 +19,8 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         super.viewDidLoad()
         
         setupViewModel()
+        setupTableViewDataSource()
+        setupTableViewDelegate()
         
         self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
     }
@@ -32,23 +34,20 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
-        
-        setupTableViewDataSource()
-        setupTableViewDelegate()
     }
     
     func setupTableViewDelegate() {
-        let delegate = RepositoryDelegate(viewModel: viewModel, tableView: tableView)
-        tableView.delegate = delegate
+        let delegate = RepositoryDelegate(viewModel: viewModel, tableView: self.tableView)
+        self.tableView.delegate = delegate
     }
     
     func setupTableViewDataSource() {
         let dataSource = RepositoryDataSource(viewModel: viewModel)
-        tableView.dataSource = dataSource
+        self.tableView.dataSource = dataSource
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow else {
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
             self.showMessage(appError: GenericError.cellNotSelected)
             return
         }
@@ -70,7 +69,7 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
     //MARK: ServiceDelegate
     func onFinish() {
         self.viewModel.initializeFetchResultsController()
-        tableView.reloadData()
+        self.tableView.reloadData()
         self.dismissActivityIndicator()
     }
 

@@ -31,7 +31,7 @@ extension PullRequestTableViewController {
             fatalError("FetchResultsController is empty")
         }
         
-        cell.configure(pullRequest: pullRequest)
+        cell.configure(objectAssociated: pullRequest)
         return cell
     }
 }

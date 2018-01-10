@@ -8,32 +8,26 @@
 
 import UIKit
 
-class RepositoryDataSource: NSObject, UITableViewDataSource {
+class RepositoryDataSource: GenericDataSource {
 
-    private let viewModel: GenericViewModel!
+    private var viewModel: GenericViewModel!
     
-    required init(viewModel: GenericViewModel) {
+    required override init(viewModel: GenericViewModel) {
         self.viewModel = viewModel
+        
+        super.init(viewModel: viewModel)
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel?.numberOfSections() ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfRows() ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let repository = viewModel.getRepository(atIndexPath: indexPath) else {
             fatalError("Repository not found")
         }
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath) as? RepositoryTableViewCell {
-            cell.configure(repository: repository)
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.reuseIdentifier, for: indexPath) as? RepositoryTableViewCell else {
+            fatalError("The cell RepositoryTableViewCell sholud not be nil")
         }
         
-        return UITableViewCell()
+        cell.configure(objectAssociated: repository)
+        return cell
     }
 }
