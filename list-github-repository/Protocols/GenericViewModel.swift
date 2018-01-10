@@ -9,8 +9,12 @@
 import Foundation
 
 protocol GenericViewModel {
+    associatedtype T
+    
     func numberOfRows() -> Int
     func numberOfSections() -> Int
-    func getRepository(atIndexPath indexPath: IndexPath) -> RepositoryEntity?
+    func item(atIndexPath indexPath: IndexPath) -> T?
     func fetchRequest()
 }
+
+

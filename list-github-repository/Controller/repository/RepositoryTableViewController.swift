@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SVProgressHUD
 
-class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSFetchedResultsControllerDelegate {
+class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSFetchedResultsControllerDelegate, RepositoryViewControllerDelegate {
     
     var viewModel: RepositoryViewModel!
     var managedObjectContext: NSManagedObjectContext!
@@ -37,7 +37,7 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
     }
     
     func setupTableViewDelegate() {
-        let delegate = RepositoryDelegate(viewModel: viewModel, tableView: self.tableView)
+        let delegate = RepositoryDelegate(viewModel: viewModel, delegate: self)
         self.tableView.delegate = delegate
     }
     
@@ -46,33 +46,27 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
         self.tableView.dataSource = dataSource
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        guard let indexPath = tableView.indexPathForSelectedRow else {
-            self.showMessage(by: GenericError.cellNotSelected)
-            
-            return
-        }
-        
-        guard let repository = self.viewModel.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
-            self.showMessage(by: GenericError.objectEmpty)
-            return
-        }
-        
-        guard let destinationVC = segue.destination as? PullRequestTableViewController else {
-            print("Error to get destionationViewController")
-            return
-        }
-        
-        destinationVC.managedObjectContext = self.managedObjectContext
-        destinationVC.repository = repository
-    }
-    
     //MARK: ServiceDelegate
     func onFinish() {
         self.viewModel.initializeFetchResultsController()
         self.tableView.reloadData()
         self.dismissActivityIndicator()
+    }
+    
+    //MARK: RepositoryViewControllerDelegate
+    func scrollEndOfTableView() {
+        viewModel.fetchRequest()
+        
+        let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        ActivityIndicator.startAnimating()
+        ActivityIndicator.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = ActivityIndicator
+        self.tableView.tableFooterView?.isHidden = false
+    }
+    
+    func presentPullRequestViewController() {
+        let destinationViewController = StoryboardScene.Main.pullRequestStoryboard.instantiate()
+        navigationController?.pushViewController(destinationViewController, animated: true)
     }
 
 }

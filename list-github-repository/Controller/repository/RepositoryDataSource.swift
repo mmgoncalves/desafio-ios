@@ -8,17 +8,23 @@
 
 import UIKit
 
-class RepositoryDataSource: GenericDataSource {
+class RepositoryDataSource: NSObject, UITableViewDataSource {
 
-    private var viewModel: GenericViewModel!
+    private var viewModel: GenericViewModel
     
-    required override init(viewModel: GenericViewModel) {
+    required init(viewModel: GenericViewModel) {
         self.viewModel = viewModel
-        
-        super.init(viewModel: viewModel)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSections()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let repository = viewModel.getRepository(atIndexPath: indexPath) else {
             fatalError("Repository not found")
         }

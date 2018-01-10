@@ -11,35 +11,25 @@ import SVProgressHUD
 
 class RepositoryDelegate: NSObject, UITableViewDelegate {
     
-    private let viewModel: GenericViewModel!
-    let tableView: UITableView!
+    private let viewModel: GenericViewModel
+    private let delegate: RepositoryViewControllerDelegate
     
-    init(viewModel: GenericViewModel, tableView: UITableView) {
+    init(viewModel: GenericViewModel, delegate: RepositoryViewControllerDelegate) {
         self.viewModel = viewModel
-        self.tableView = tableView
+        self.delegate = delegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.selectionStyle = .none
-
-//        self.performSegue(withIdentifier: "showPullRequestsSegue", sender: nil)
+        self.delegate.presentPullRequestViewController()
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let items = viewModel.numberOfRows()
         if indexPath.row == items - 1 {
-            setFooterActivityIndicator()
-            viewModel.fetchRequest()
+            self.delegate.scrollEndOfTableView()
         }
-    }
-    
-    private func setFooterActivityIndicator() {
-        let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        ActivityIndicator.startAnimating()
-        ActivityIndicator.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tableView.bounds.width, height: CGFloat(44))
-        self.tableView.tableFooterView = ActivityIndicator
-        self.tableView.tableFooterView?.isHidden = false
     }
 }
