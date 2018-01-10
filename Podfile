@@ -7,7 +7,7 @@ target 'list-github-repository' do
   pod 'Alamofire', '~> 4.5'
   pod 'Kingfisher', '~> 4.0'
   pod 'SVProgressHUD', '~> 2.2'
-
+  pod 'SwiftGen', '~> 5.2'
   # Pods for list-github-repository
 
   target 'list-github-repositoryTests' do

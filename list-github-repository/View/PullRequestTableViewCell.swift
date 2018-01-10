@@ -20,7 +20,6 @@ class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier, CellProtoco
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func configure(objectAssociated: ObjectAssociated) -> Void {
