@@ -162,10 +162,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Ypo-JW-Yr1" id="VF2-0W-p2N"/>
-                            <outlet property="delegate" destination="Ypo-JW-Yr1" id="HnW-ex-qei"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Repositórios" id="RQB-yM-sML"/>
                     <connections>
