@@ -19,7 +19,6 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     func configure(repository:RepositoryEntity) {

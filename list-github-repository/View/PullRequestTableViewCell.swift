@@ -18,7 +18,6 @@ class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func configure(pullRequest: PullRequestEntity) {

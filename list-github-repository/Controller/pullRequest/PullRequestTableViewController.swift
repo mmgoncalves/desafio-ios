@@ -30,5 +30,4 @@ class PullRequestTableViewController: UITableViewController, ServiceDelegate, NS
         
         self.viewModel.initializeFetchResultsController()
     }
-
 }

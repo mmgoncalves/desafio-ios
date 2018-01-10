@@ -18,7 +18,7 @@
         <!--Repositórios-->
         <scene sceneID="JuA-yg-12J">
             <objects>
-                <tableViewController id="Ypo-JW-Yr1" customClass="RepositoryTableViewController" customModule="list_github_repository" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RepositoryStorybord" id="Ypo-JW-Yr1" customClass="RepositoryTableViewController" customModule="list_github_repository" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="42z-YN-SU8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,9 +168,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Repositórios" id="RQB-yM-sML"/>
-                    <connections>
-                        <segue destination="U38-oe-VGL" kind="show" identifier="showPullRequestsSegue" id="KdD-O8-1SB"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fiy-1K-tiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,7 +176,7 @@
         <!--Pull Request Table View Controller-->
         <scene sceneID="EmE-G4-hfS">
             <objects>
-                <tableViewController id="U38-oe-VGL" customClass="PullRequestTableViewController" customModule="list_github_repository" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PullRequestStoryboard" id="U38-oe-VGL" customClass="PullRequestTableViewController" customModule="list_github_repository" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Niu-o6-an0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,17 +250,17 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="author" destination="wDR-Ng-T3y" id="XKZ-HO-vaO"/>
-                                    <outlet property="avatar" destination="nnu-EA-DVC" id="Zzv-TX-MIt"/>
-                                    <outlet property="body" destination="3jy-8t-45F" id="cQL-PB-qht"/>
-                                    <outlet property="date" destination="y6W-AW-p81" id="sPR-ZX-Hj8"/>
-                                    <outlet property="title" destination="7bW-YG-OFh" id="tpX-Hs-V4u"/>
+                                    <outlet property="author" destination="wDR-Ng-T3y" id="dVA-oY-hvG"/>
+                                    <outlet property="avatar" destination="nnu-EA-DVC" id="2UU-Uv-B1X"/>
+                                    <outlet property="body" destination="3jy-8t-45F" id="GrG-PJ-Xgv"/>
+                                    <outlet property="date" destination="y6W-AW-p81" id="k4w-Ov-3v2"/>
+                                    <outlet property="title" destination="7bW-YG-OFh" id="38g-Z0-mO3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="U38-oe-VGL" id="Evn-ZL-PLU"/>
-                            <outlet property="delegate" destination="U38-oe-VGL" id="qmv-5p-rN8"/>
+                            <outlet property="dataSource" destination="U38-oe-VGL" id="be2-91-Y4p"/>
+                            <outlet property="delegate" destination="U38-oe-VGL" id="Pb9-WE-zPw"/>
                         </connections>
                     </tableView>
                 </tableViewController>

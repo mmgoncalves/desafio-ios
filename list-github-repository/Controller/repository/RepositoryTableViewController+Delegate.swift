@@ -15,7 +15,25 @@ extension RepositoryTableViewController {
         let cell = self.tableView.cellForRow(at: indexPath)
         cell?.selectionStyle = .none
         
-        self.performSegue(withIdentifier: "showPullRequestsSegue", sender: nil)
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            self.showMessage(by: GenericError.cellNotSelected)
+            return
+        }
+        
+        guard let repository = self.viewModel.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
+            self.showMessage(by: GenericError.objectEmpty)
+            return
+        }
+        
+        showPullRequestScreen(repository: repository)
+    }
+    
+    private func showPullRequestScreen(repository: RepositoryEntity) {
+        let viewController = StoryboardScene.Main.pullRequestStoryboard.instantiate()
+        
+        viewController.managedObjectContext = self.managedObjectContext
+        viewController.repository = repository
+        navigationController?.show(viewController, sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -39,7 +57,7 @@ extension RepositoryTableViewController {
     //MARK: ServiceDelegate
     func onFinish() {
         self.viewModel.initializeFetchResultsController()
-        tableView.reloadData()
+        self.tableView.reloadData()
         self.dismissActivityIndicator()
     }
 }
