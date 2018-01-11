@@ -21,11 +21,11 @@ class RepositoryDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows()
+        return viewModel.numberOfRows(inSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let repository = viewModel.getRepository(atIndexPath: indexPath) else {
+        guard let repository = viewModel.item(atIndexPath: indexPath) as? RepositoryEntity else {
             fatalError("Repository not found")
         }
         

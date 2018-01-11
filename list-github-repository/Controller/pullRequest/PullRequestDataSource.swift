@@ -21,7 +21,7 @@ class PullRequestDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows()
+        return viewModel.numberOfRows(inSection: section)
 //        guard let sections = self.viewModel.fetchResultsController.sections else {
 //            fatalError("FetchResultsController is empty")
 //        }
@@ -34,9 +34,9 @@ class PullRequestDataSource: NSObject, UITableViewDataSource {
             fatalError("Error to cast PullRequestTableViewCell")
         }
         
-//        guard let pullRequest = self.viewModel.fetchResultsController.object(at: indexPath) as? PullRequestEntity else {
-//            fatalError("FetchResultsController is empty")
-//        }
+        guard let pullRequest = viewModel.item(atIndexPath: indexPath) as? PullRequestEntity else{
+            fatalError("FetchResultsController is empty")
+        }
         
         cell.configure(objectAssociated: pullRequest)
         return cell

@@ -37,20 +37,5 @@ class BaseViewModel: GenericViewModel {
         } catch {}
     }
     
-    func numberOfRows() -> Int {
-        let sections = self.numberOfSections()
-        return self.fetchResultsController.sections?[sections - 1].numberOfObjects ?? 0
-    }
     
-    func numberOfSections() -> Int {
-        return self.fetchResultsController.sections?.count ?? 0
-    }
-    
-    func getRepository(atIndexPath indexPath: IndexPath) -> RepositoryEntity? {
-        guard let repository = self.fetchResultsController.object(at: indexPath) as? RepositoryEntity else {
-            return nil
-        }
-        
-        return repository
-    }
 }
