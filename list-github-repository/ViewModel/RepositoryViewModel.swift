@@ -19,7 +19,7 @@ class RepositoryViewModel: BaseViewModel {
         self.lastPage = RepositoryDAO.getLastPage(inContext: context)
         
         if self.lastPage == 1 {
-            self.fetchRepositories()
+            self.fetchRequest()
         }
     }
     
@@ -29,7 +29,9 @@ class RepositoryViewModel: BaseViewModel {
         self.configureFetchResultsController(fetchRequest: fetchRequest)
     }
     
-    func fetchRepositories() {
+    override func fetchRequest() {
+        super.fetchRequest()
+        
         if Generic.isConnectedToNetwork() {
             RepositoryService.makeRequest(withPage: self.lastPage, context: self.managedObjectContext) { error in
                 if error == nil {

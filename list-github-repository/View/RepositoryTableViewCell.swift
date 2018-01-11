@@ -8,8 +8,10 @@
 
 import UIKit
 
-class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier {
-
+class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol {
+    
+    typealias ObjectAssociated = RepositoryEntity
+    
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var title: UILabel!
@@ -21,7 +23,9 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier {
         super.awakeFromNib()
     }
 
-    func configure(repository:RepositoryEntity) {
+    func configure(objectAssociated: ObjectAssociated) -> Void {
+        let repository = objectAssociated
+        
         self.author.text = repository.owner?.login
         self.title.text = repository.name
         self.body.text = repository.body

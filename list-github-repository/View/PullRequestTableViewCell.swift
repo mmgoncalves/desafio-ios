@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier {
+class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol {
+    
+    typealias ObjectAssociated = PullRequestEntity
     
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var author: UILabel!
@@ -20,7 +22,9 @@ class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier {
         super.awakeFromNib()
     }
 
-    func configure(pullRequest: PullRequestEntity) {
+    func configure(objectAssociated: ObjectAssociated) -> Void {
+        let pullRequest = objectAssociated
+        
         self.author.text = pullRequest.owner?.login
         self.title.text = pullRequest.title
         self.body.text = pullRequest.body
