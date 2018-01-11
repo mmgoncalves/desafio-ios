@@ -9,6 +9,6 @@
 import Foundation
 
 protocol RepositoryViewControllerDelegate {
-    func scrollEndOfTableView() -> Void
-    func presentPullRequestViewController() -> Void
+    func scrolledToTheEndOfTableView() -> Void
+    func selectedItem(atIndexPath: IndexPath) -> Void
 }

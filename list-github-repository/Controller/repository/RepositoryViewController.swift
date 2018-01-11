@@ -21,8 +21,6 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
         super.viewDidLoad()
         
         setupViewModel()
-        setupTableViewDataSource()
-        setupTableViewDelegate()
         
         self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
     }
@@ -36,6 +34,8 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
+        setupTableViewDataSource()
+        setupTableViewDelegate()
     }
     
     func setupTableViewDelegate() {
@@ -56,7 +56,7 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
     }
     
     //MARK: RepositoryViewControllerDelegate
-    func scrollEndOfTableView() {
+    func scrolledToTheEndOfTableView() {
         viewModel.fetchRequest()
         
         let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -66,8 +66,17 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
         self.tableView.tableFooterView?.isHidden = false
     }
     
-    func presentPullRequestViewController() {
+    func selectedItem(atIndexPath: IndexPath) {
+        guard let repository = viewModel.item(atIndexPath: atIndexPath) as? RepositoryEntity else {
+            self.showMessage(by: GenericError.cellNotSelected)
+            return
+        }
+        
         let destinationViewController = StoryboardScene.Main.pullRequestViewController.instantiate()
+        
+        destinationViewController.managedObjectContext = self.managedObjectContext
+        destinationViewController.repository = repository
+        
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 

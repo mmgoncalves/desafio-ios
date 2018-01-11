@@ -22,14 +22,14 @@ class RepositoryDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.selectionStyle = .none
-        self.delegate.presentPullRequestViewController()
+        self.delegate.selectedItem(atIndexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let items = viewModel.numberOfRows()
         if indexPath.row == items - 1 {
-            self.delegate.scrollEndOfTableView()
+            self.delegate.scrolledToTheEndOfTableView()
         }
     }
 }

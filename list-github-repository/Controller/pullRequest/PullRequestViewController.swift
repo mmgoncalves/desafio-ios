@@ -13,21 +13,21 @@ class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedRes
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var managedObjectContext: NSManagedObjectContext
-    private var repository: RepositoryEntity
+    var managedObjectContext: NSManagedObjectContext?
+    var repository: RepositoryEntity?
     
     var viewModel: PullRequestViewModel!
     
-    init?(managedObjectContext: NSManagedObjectContext, repository: RepositoryEntity) {
-        
-        self.managedObjectContext = managedObjectContext
-        self.repository = repository
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init?(managedObjectContext: NSManagedObjectContext, repository: RepositoryEntity) {
+//
+//        self.managedObjectContext = managedObjectContext
+//        self.repository = repository
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedRes
     }
     
     private func setupViewModel() {
-        self.viewModel = PullRequestViewModel(repository: self.repository, context: self.managedObjectContext)
+        self.viewModel = PullRequestViewModel(repository: self.repository!, context: self.managedObjectContext!)
         
         self.viewModel.serviceDelegate = self
         self.viewModel.fetchResultControllerDelegate = self
