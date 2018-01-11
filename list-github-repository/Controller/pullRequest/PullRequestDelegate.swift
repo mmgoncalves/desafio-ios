@@ -17,13 +17,8 @@ class PullRequestDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        
-        
-//        if let pullRequest = self.viewModel.fetchResultsController.object(at: indexPath) as? PullRequestEntity,
-//            let url = URL(string: pullRequest.url)
-//        {
-//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//        }
+        if let pullRequest = viewModel.item(atIndexPath: indexPath) as? PullRequestEntity, let url = URL(string: pullRequest.url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }
