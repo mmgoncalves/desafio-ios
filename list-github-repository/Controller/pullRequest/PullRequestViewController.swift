@@ -9,17 +9,20 @@
 import UIKit
 import CoreData
 
-class PullRequestTableViewController: UITableViewController, ServiceDelegate, NSFetchedResultsControllerDelegate {
+class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedResultsControllerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     private var managedObjectContext: NSManagedObjectContext
     private var repository: RepositoryEntity
     
     var viewModel: PullRequestViewModel!
     
-    required init?(managedObjectContext: NSManagedObjectContext, repository: RepositoryEntity) {
+    init?(managedObjectContext: NSManagedObjectContext, repository: RepositoryEntity) {
+        
         self.managedObjectContext = managedObjectContext
         self.repository = repository
-        super.init(style: .plain)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {

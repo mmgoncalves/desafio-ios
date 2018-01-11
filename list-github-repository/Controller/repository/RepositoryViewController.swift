@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 import SVProgressHUD
 
-class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSFetchedResultsControllerDelegate, RepositoryViewControllerDelegate {
+class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResultsControllerDelegate, RepositoryViewControllerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var viewModel: RepositoryViewModel!
     var managedObjectContext: NSManagedObjectContext!
@@ -65,7 +67,7 @@ class RepositoryTableViewController: UITableViewController, ServiceDelegate, NSF
     }
     
     func presentPullRequestViewController() {
-        let destinationViewController = StoryboardScene.Main.pullRequestStoryboard.instantiate()
+        let destinationViewController = StoryboardScene.Main.pullRequestViewController.instantiate()
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 

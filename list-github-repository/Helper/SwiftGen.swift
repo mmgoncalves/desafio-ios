@@ -1,11 +1,3 @@
-//
-//  SwiftGen.swift
-//  list-github-repository
-//
-//  Created by Mateus Gonçalves on 10/01/18.
-//  Copyright © 2018 Mateus Marques. All rights reserved.
-//
-
 // swiftlint:disable sorted_imports
 import Foundation
 import UIKit
@@ -19,7 +11,8 @@ protocol StoryboardType {
 
 extension StoryboardType {
     static var storyboard: UIStoryboard {
-        return UIStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
+        let name = self.storyboardName
+        return UIStoryboard(name: name, bundle: Bundle(for: BundleToken.self))
     }
 }
 
@@ -28,6 +21,7 @@ struct SceneType<T: Any> {
     let identifier: String
     
     func instantiate() -> T {
+        let identifier = self.identifier
         guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
             fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
         }
@@ -50,7 +44,8 @@ protocol SegueType: RawRepresentable { }
 
 extension UIViewController {
     func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-        performSegue(withIdentifier: segue.rawValue, sender: sender)
+        let identifier = segue.rawValue
+        performSegue(withIdentifier: identifier, sender: sender)
     }
 }
 
@@ -61,9 +56,9 @@ enum StoryboardScene {
         
         static let initialScene = InitialSceneType<UINavigationController>(storyboard: Main.self)
         
-        static let pullRequestStoryboard = SceneType<list_github_repository.PullRequestTableViewController>(storyboard: Main.self, identifier: "PullRequestStoryboard")
+        static let pullRequestViewController = SceneType<list_github_repository.PullRequestViewController>(storyboard: Main.self, identifier: "PullRequestViewController")
         
-        static let repositoryStorybord = SceneType<list_github_repository.RepositoryTableViewController>(storyboard: Main.self, identifier: "RepositoryStorybord")
+        static let repositoryViewController = SceneType<list_github_repository.RepositoryViewController>(storyboard: Main.self, identifier: "RepositoryViewController")
     }
 }
 
