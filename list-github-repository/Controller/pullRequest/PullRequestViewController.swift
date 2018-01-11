@@ -16,6 +16,9 @@ class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedRes
     var managedObjectContext: NSManagedObjectContext?
     var repository: RepositoryEntity?
     
+    private var tableViewDelegate: PullRequestDelegate?
+    private var tableViewDataSource: PullRequestDataSource?
+    
     var viewModel: PullRequestViewModel!
     
 //    init?(managedObjectContext: NSManagedObjectContext, repository: RepositoryEntity) {
@@ -35,18 +38,6 @@ class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedRes
         setupViewModel()
         setupDataSource()
         setupDelegate()
-        
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
-    }
-
-    private func setupDataSource() {
-        let dataSource = PullRequestDataSource(viewModel: self.viewModel)
-        self.tableView.dataSource = dataSource
-    }
-    
-    private func setupDelegate() {
-        let delegate = PullRequestDelegate(viewModel: self.viewModel)
-        self.tableView.delegate = delegate
     }
     
     private func setupViewModel() {
@@ -56,6 +47,17 @@ class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedRes
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
+    }
+
+    private func setupDataSource() {
+        self.tableViewDataSource = PullRequestDataSource(viewModel: self.viewModel)
+        self.tableView.dataSource = self.tableViewDataSource
+    }
+    
+    private func setupDelegate() {
+        self.tableViewDelegate = PullRequestDelegate(viewModel: self.viewModel)
+        self.tableView.delegate = self.tableViewDelegate
     }
     
     //MARK: ServiceDelegate

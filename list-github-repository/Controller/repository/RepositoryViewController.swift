@@ -14,18 +14,20 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
     
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: RepositoryViewModel!
-    var managedObjectContext: NSManagedObjectContext!
-
+    private var viewModel: RepositoryViewModel!
+    private var managedObjectContext: NSManagedObjectContext!
+    private var tableViewDelegate: RepositoryDelegate?
+    private var tableViewDataSource: RepositoryDataSource?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViewModel()
-        
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
+        setupTableViewDataSource()
+        setupTableViewDelegate()
     }
 
-    func setupViewModel() {
+    private func setupViewModel() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         self.managedObjectContext = appDelegate?.persistentContainer.viewContext
         
@@ -34,18 +36,17 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
         self.viewModel.fetchResultControllerDelegate = self
         
         self.viewModel.initializeFetchResultsController()
-        setupTableViewDataSource()
-        setupTableViewDelegate()
+        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
     }
     
-    func setupTableViewDelegate() {
-        let delegate = RepositoryDelegate(viewModel: viewModel, delegate: self)
-        self.tableView.delegate = delegate
+    private func setupTableViewDelegate() {
+        self.tableViewDelegate = RepositoryDelegate(viewModel: viewModel, delegate: self)
+        self.tableView.delegate = self.tableViewDelegate
     }
     
-    func setupTableViewDataSource() {
-        let dataSource = RepositoryDataSource(viewModel: viewModel)
-        self.tableView.dataSource = dataSource
+    private func setupTableViewDataSource() {
+        self.tableViewDataSource = RepositoryDataSource(viewModel: viewModel)
+        self.tableView.dataSource = self.tableViewDataSource
     }
     
     //MARK: ServiceDelegate
