@@ -12,7 +12,7 @@ class PullRequestDataSource: NSObject, UITableViewDataSource {
     
     private var viewModel: GenericViewModel
     
-    init(viewModel: GenericViewModel) {
+    required init(viewModel: GenericViewModel) {
         self.viewModel = viewModel
     }
 
@@ -21,12 +21,7 @@ class PullRequestDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(inSection: section)
-//        guard let sections = self.viewModel.fetchResultsController.sections else {
-//            fatalError("FetchResultsController is empty")
-//        }
-//
-//        return sections[section].numberOfObjects
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -34,7 +29,7 @@ class PullRequestDataSource: NSObject, UITableViewDataSource {
             fatalError("Error to cast PullRequestTableViewCell")
         }
         
-        guard let pullRequest = viewModel.item(atIndexPath: indexPath) as? PullRequestEntity else{
+        guard let pullRequest = viewModel.item(atIndexPath: indexPath) as? PullRequest else{
             fatalError("FetchResultsController is empty")
         }
         

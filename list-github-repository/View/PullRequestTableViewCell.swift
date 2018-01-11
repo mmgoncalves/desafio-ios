@@ -10,7 +10,7 @@ import UIKit
 
 class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol {
     
-    typealias ObjectAssociated = PullRequestEntity
+    typealias ObjectAssociated = PullRequest
     
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var author: UILabel!
@@ -24,11 +24,14 @@ class PullRequestTableViewCell: UITableViewCell, ReusableIdentifier, CellProtoco
 
     func configure(objectAssociated: ObjectAssociated) -> Void {
         let pullRequest = objectAssociated
-        
-        self.author.text = pullRequest.owner?.login
+
+        self.author.text = pullRequest.information.owner.login
         self.title.text = pullRequest.title
         self.body.text = pullRequest.body
-        self.date.text = pullRequest.createdAt?.shortDate
-        self.avatar.downloadImage(byString: pullRequest.owner?.avatar)
+        self.avatar.downloadImage(byString: pullRequest.information.owner.avatarUrl)
+        
+        if let date = Date.from(dateString: pullRequest.createdAt) {
+            self.date.text = date.shortDate
+        }
     }
 }

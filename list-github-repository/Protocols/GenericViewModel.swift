@@ -6,37 +6,33 @@
 //  Copyright © 2018 Mateus Marques. All rights reserved.
 //
 
-import CoreData
+import Foundation
 
 protocol GenericViewModel {
-    var fetchResultsController: NSFetchedResultsController<NSFetchRequestResult>! {get set}
+    var items: [Codable] {get set}
     
-    func numberOfRows(inSection section: Int) -> Int
     func numberOfRows() -> Int
     func numberOfSections() -> Int
-    func item(atIndexPath indexPath: IndexPath) -> NSManagedObject?
-    func fetchRequest()
+    func item(atIndexPath indexPath: IndexPath) -> Codable?
+    func updateItem(items: [Codable]) -> Void
+    func fetchRequest() -> Void
 }
 
 extension GenericViewModel {
-    func numberOfRows(inSection section: Int) -> Int {
-        return self.fetchResultsController.sections?[section].numberOfObjects ?? 0
-    }
     
     func numberOfRows() -> Int {
-        let sections = self.numberOfSections()
-        return self.fetchResultsController.sections?[sections - 1].numberOfObjects ?? 0
+        return items.count
     }
     
     func numberOfSections() -> Int {
-        return self.fetchResultsController.sections?.count ?? 0
-    }
-    
-    func item(atIndexPath indexPath: IndexPath) -> NSManagedObject? {
-        guard let nsObject = self.fetchResultsController.object(at: indexPath) as? NSManagedObject else {
-            return nil
+        if items.count == 0 {
+            return 0
         }
         
-        return nsObject
+        return 1
+    }
+    
+    func item(atIndexPath indexPath: IndexPath) -> Codable? {
+        return items[indexPath.row] ?? nil
     }
 }

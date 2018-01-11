@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct JSONOwner: Codable {
+struct Owner: Codable {
     var login: String
     var id: Int64
     var avatarUrl: String

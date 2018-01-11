@@ -6,46 +6,40 @@
 //  Copyright © 2017 Mateus Marques. All rights reserved.
 //
 
-import CoreData
 import Alamofire
 
 struct PullRequestService {
     
     static func makeRequest(
-        forRepository repository: RepositoryEntity,
-        context: NSManagedObjectContext,
-        completion: @escaping (_ error: AppError?) -> Void)
+        forRepository repository: Repository,
+        completion: @escaping (_ result: Result) -> Void)
     {
         
-        guard let projectName = repository.fullName else {
-            print("Repository fullName should not be nil")
-            return
-        }
-        
-        
-        Alamofire.request(Route.pullRequests(projectName: projectName).get, method: .get)
+        Alamofire.request(Route.pullRequests(projectName: repository.fullName).get, method: .get)
             .validate()
             .responseJSON { (dataResponse) in
             
                 guard dataResponse.result.isSuccess, let data = dataResponse.data else {
-                    let error = dataResponse.error?.localizedDescription ?? ""
-                    completion(PullRequestError.serviceResponse(localizedError: error))
+                    let msgError = dataResponse.error?.localizedDescription
+                    let appError = RepositoryError.serviceResponse(localizedError: msgError ?? "")
+                    let result = Result.error(appError)
+                    
+                    completion(result)
                     return
                 }
                 
                 do {
-                    let jsonPullRequests = try JSONDecoder().decode([JSONPullRequest].self, from: data)
+                    let items = try JSONDecoder().decode([PullRequest].self, from: data)
+                    let result = Result.success(items: items)
                     
-                    PullRequestDAO.save(jsonPullRequests: jsonPullRequests, repositoryId: repository.id, inContext: context) { error in
-                        if let error = error {
-                            completion(PullRequestError.save(localizedError: error.localizedDescription))
-                        } else {
-                            completion(nil)
-                        }
-                    }
+                    completion(result)
+                    
                 } catch {
                     print("Malformed data received from service")
-                    completion(PullRequestError.save(localizedError: error.localizedDescription))
+                    let appError = RepositoryError.parseToObject
+                    let result = Result.error(appError)
+                    
+                    completion(result)
                 }
         }
     }

@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum Result {
+    case success(items: [Codable])
+    case error(AppError)
+}
+
 enum Route {
-    case repository(withPage: Int16)
+    case repository(withPage: Int)
     case pullRequests(projectName: String)
     
     var get: String {

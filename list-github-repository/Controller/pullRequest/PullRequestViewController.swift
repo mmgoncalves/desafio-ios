@@ -7,21 +7,19 @@
 //
 
 import UIKit
-import CoreData
 
-class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedResultsControllerDelegate {
+class PullRequestViewController: UIViewController, ServiceDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var managedObjectContext: NSManagedObjectContext?
-    var repository: RepositoryEntity?
+    var repository: Repository?
+    var viewModel: PullRequestViewModel?
     
     private var tableViewDelegate: PullRequestDelegate?
     private var tableViewDataSource: PullRequestDataSource?
     
-    var viewModel: PullRequestViewModel!
     
-//    init?(managedObjectContext: NSManagedObjectContext, repository: RepositoryEntity) {
+//    init?(managedObjectContext: NSManagedObjectContext, repository: Repository) {
 //
 //        self.managedObjectContext = managedObjectContext
 //        self.repository = repository
@@ -41,29 +39,29 @@ class PullRequestViewController: UIViewController, ServiceDelegate, NSFetchedRes
     }
     
     private func setupViewModel() {
-        self.viewModel = PullRequestViewModel(repository: self.repository!, context: self.managedObjectContext!)
+        self.viewModel = PullRequestViewModel(repository: repository!, serviceDelegate: self)
         
-        self.viewModel.serviceDelegate = self
-        self.viewModel.fetchResultControllerDelegate = self
-        
-        self.viewModel.initializeFetchResultsController()
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
+        self.startActivityIndicator(numberOfObjects: (self.viewModel?.numberOfRows())!)
     }
 
     private func setupDataSource() {
-        self.tableViewDataSource = PullRequestDataSource(viewModel: self.viewModel)
+        self.tableViewDataSource = PullRequestDataSource(viewModel: self.viewModel!)
         self.tableView.dataSource = self.tableViewDataSource
     }
     
     private func setupDelegate() {
-        self.tableViewDelegate = PullRequestDelegate(viewModel: self.viewModel)
+        self.tableViewDelegate = PullRequestDelegate(viewModel: self.viewModel!)
         self.tableView.delegate = self.tableViewDelegate
     }
     
     //MARK: ServiceDelegate
-    func onFinish() {
-        self.viewModel.initializeFetchResultsController()
+    func requestSuccess(items: [Codable]) -> Void {
+        viewModel?.updateItem(items: items)
         tableView.reloadData()
         self.dismissActivityIndicator()
+    }
+    
+    func requestFailed(error: AppError) -> Void {
+        self.showMessage(by: error)
     }
 }

@@ -14,4 +14,12 @@ extension Date {
         formatt.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return formatt.date(from: dateString)
     }
+    
+    var shortDate: String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.locale = Locale(identifier: "pt_BR")
+        return formatter.string(from: self)
+    }
 }

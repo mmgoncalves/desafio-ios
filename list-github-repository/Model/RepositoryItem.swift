@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct JSONRepositoryItem: Codable {
-    var items: [JSONRepository]
+struct RepositoryItem: Codable {
+    var items: [Repository]
 }

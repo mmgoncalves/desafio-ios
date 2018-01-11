@@ -9,5 +9,7 @@
 import Foundation
 
 protocol ServiceDelegate {
-    func onFinish() -> Void
+    // improve to return Result<T>
+    func requestSuccess(items: [Codable]) -> Void
+    func requestFailed(error: AppError) -> Void
 }

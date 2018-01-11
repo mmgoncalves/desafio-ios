@@ -6,39 +6,44 @@
 //  Copyright © 2017 Mateus Marques. All rights reserved.
 //
 
-import CoreData
+import Foundation
 
-class RepositoryViewModel: BaseViewModel {
+class RepositoryViewModel: GenericViewModel {
+    
+    var items: [Codable] = []
     
     var serviceDelegate: ServiceDelegate!
-    var lastPage: Int16!
+    var lastPage: Int = 1
     
-    required init?(context: NSManagedObjectContext) {
-        super.init(context: context)
-        
-        self.lastPage = RepositoryDAO.getLastPage(inContext: context)
-        
-        if self.lastPage == 1 {
-            self.fetchRequest()
-        }
+    init() {
+        self.fetchRequest()
     }
     
-    func initializeFetchResultsController() {
-        let fetchRequest = RepositoryDAO.fetchRequestDefault()
-        
-        self.configureFetchResultsController(fetchRequest: fetchRequest)
-    }
-    
-    override func fetchRequest() {
-        super.fetchRequest()
+    func fetchRequest() {
         
         if Generic.isConnectedToNetwork() {
-            RepositoryService.makeRequest(withPage: self.lastPage, context: self.managedObjectContext) { error in
-                if error == nil {
-                    self.lastPage = self.lastPage + 1
+            RepositoryService.makeRequest(withPage: self.lastPage, completion: { (result) in
+                
+                switch result {
+                case .success(let items):
+                    
+                    self.updateItem(items: items)
+                    self.updateNumberOfPage()
+                    self.serviceDelegate.requestSuccess(items: items)
+                    
+                case .error(let error):
+                    self.serviceDelegate.requestFailed(error: error)
                 }
-                self.serviceDelegate.onFinish()
-            }
+                
+            })
         }
+    }
+    
+    func updateItem(items: [Codable]) {
+        self.items.append(contentsOf: items)
+    }
+    
+    private func updateNumberOfPage() {
+        self.lastPage += 1
     }
 }

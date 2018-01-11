@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct JSONPullRequest: Codable {
+struct PullRequest: Codable {
     var url: String
     var id: Int64
     var title: String
     var body: String?
     var createdAt: String
-    var head: JSONHead
+    var information: Head
     
     enum CodingKeys: String, CodingKey {
         case url = "html_url"
         case createdAt = "created_at"
+        case information = "head"
         case id
         case title
         case body
-        case head
     }
 }

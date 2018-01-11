@@ -16,11 +16,11 @@ struct StubJSONPullRequest {
         return jsonString.data(using: .utf8)!
     }
     
-    static func getPullRequests() -> [JSONPullRequest] {
+    static func getPullRequests() -> [PullRequest] {
         let jsonData = StubJSONPullRequest.getData()
         
         do {
-            let jsonPullRequests = try JSONDecoder().decode([JSONPullRequest].self, from: jsonData)
+            let jsonPullRequests = try JSONDecoder().decode([PullRequest].self, from: jsonData)
             return jsonPullRequests
         } catch {
             fatalError("Parse json to object failed")

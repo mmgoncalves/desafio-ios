@@ -6,16 +6,13 @@
 //  Copyright © 2017 Mateus Marques. All rights reserved.
 //
 
-import Foundation
-import CoreData
 import Alamofire
 
 struct RepositoryService {
  
     static func makeRequest(
-        withPage page: Int16,
-        context: NSManagedObjectContext,
-        completion: @escaping (_ error: AppError?) -> Void)
+        withPage page: Int,
+        completion: @escaping (_ result: Result) -> Void)
     {
     
         Alamofire.request(Route.repository(withPage: page).get, method: .get)
@@ -23,24 +20,26 @@ struct RepositoryService {
             .responseJSON { (dataResponse) in
             
                 guard dataResponse.result.isSuccess, let data = dataResponse.data else {
-                    let error = dataResponse.error?.localizedDescription ?? ""
-                    completion(RepositoryError.serviceResponse(localizedError: error))
+                    let msgError = dataResponse.result.error?.localizedDescription
+                    let appError = RepositoryError.serviceResponse(localizedError: msgError ?? "")
+                    let result = Result.error(appError)
+                    
+                    completion(result)
                     return
                 }
                 
                 do {
-                    let jsonRepositoryItem = try JSONDecoder().decode(JSONRepositoryItem.self, from: data)
+                    let repositories = try JSONDecoder().decode(RepositoryItem.self, from: data)
+                    let result = Result.success(items: repositories.items)
                     
-                    RepositoryDAO.save(jsonRepositories: jsonRepositoryItem.items, page: page, inContext: context) { error in
-                        if let error = error {
-                            completion(RepositoryError.saveRepositories(localizedError: error.localizedDescription))
-                        } else {
-                            completion(nil)
-                        }
-                    }
+                    completion(result)
                 } catch {
                     print("Malformed data received from service")
-                    completion(RepositoryError.serviceResponse(localizedError: error.localizedDescription))
+                    
+                    let appError = RepositoryError.parseToObject
+                    let result = Result.error(appError)
+                    
+                    completion(result)
                 }
         }
     }

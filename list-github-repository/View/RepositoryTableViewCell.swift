@@ -10,7 +10,7 @@ import UIKit
 
 class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol {
     
-    typealias ObjectAssociated = RepositoryEntity
+    typealias ObjectAssociated = Repository
     
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var author: UILabel!
@@ -26,11 +26,11 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     func configure(objectAssociated: ObjectAssociated) -> Void {
         let repository = objectAssociated
         
-        self.author.text = repository.owner?.login
+        self.author.text = repository.owner.login
         self.title.text = repository.name
         self.body.text = repository.body
         self.stars.text = String(repository.stars)
         self.forks.text = String(repository.forks)
-        self.avatar.downloadImage(byString: repository.owner?.avatar)
+        self.avatar.downloadImage(byString: repository.owner.avatarUrl)
     }
 }

@@ -16,11 +16,11 @@ struct StubJSONRepository {
         return jsonString.data(using: .utf8)!
     }
     
-    static func getRepositories() -> [JSONRepository] {
+    static func getRepositories() -> [Repository] {
         let jsonData = StubJSONRepository.getData()
         
         do {
-            let jsonRepositoryItem = try JSONDecoder().decode(JSONRepositoryItem.self, from: jsonData)
+            let jsonRepositoryItem = try JSONDecoder().decode(RepositoryItem.self, from: jsonData)
             return jsonRepositoryItem.items
         } catch {
             fatalError("Parse json to object failed. Error: \(error)")

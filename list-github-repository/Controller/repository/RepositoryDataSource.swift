@@ -21,16 +21,16 @@ class RepositoryDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(inSection: section)
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let repository = viewModel.item(atIndexPath: indexPath) as? RepositoryEntity else {
-            fatalError("Repository not found")
-        }
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.reuseIdentifier, for: indexPath) as? RepositoryTableViewCell else {
             fatalError("The cell RepositoryTableViewCell sholud not be nil")
+        }
+        
+        guard let repository = viewModel.item(atIndexPath: indexPath) as? Repository else {
+            fatalError("Repository not found")
         }
         
         cell.configure(objectAssociated: repository)

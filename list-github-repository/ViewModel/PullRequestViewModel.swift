@@ -6,40 +6,42 @@
 //  Copyright © 2017 Mateus Marques. All rights reserved.
 //
 
-import CoreData
+import Foundation
 
-class PullRequestViewModel: BaseViewModel {
+class PullRequestViewModel: GenericViewModel {
     
-    var pullRequests: [JSONPullRequest]?
-    var serviceDelegate: ServiceDelegate!
-    private var repository: RepositoryEntity!
+    var items: [Codable] = []
     
-    required init?(repository: RepositoryEntity, context: NSManagedObjectContext) {
-        super.init(context: context)
+    var pullRequests: [PullRequest]?
+    private var serviceDelegate: ServiceDelegate
+    private var repository: Repository
+    
+    init(repository: Repository, serviceDelegate: ServiceDelegate) {
+        
         self.repository = repository
-        self.fetchPullRequests()
-    }
-    
-    required init?(context: NSManagedObjectContext) {
-        fatalError("init(context:) has not been implemented")
-    }
-    
-    func initializeFetchResultsController() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = PullRequestEntity.fetchRequest()
-        let sortById = NSSortDescriptor(key: "id", ascending: false)
-        let predicate = NSPredicate(format: "repository.id = %@", argumentArray: [self.repository.id])
+        self.serviceDelegate = serviceDelegate
         
-        fetchRequest.sortDescriptors = [sortById]
-        fetchRequest.predicate = predicate
-        
-        self.configureFetchResultsController(fetchRequest: fetchRequest)
+        self.fetchRequest()
     }
     
-    private func fetchPullRequests() {
+    func fetchRequest() {
         if Generic.isConnectedToNetwork() {
-            PullRequestService.makeRequest(forRepository: self.repository, context: self.managedObjectContext) { error in
-                self.serviceDelegate.onFinish()
-            }
+            PullRequestService.makeRequest(forRepository: self.repository, completion: { (result) in
+                
+                switch result {
+                    case .success(let items):
+                        self.updateItem(items: items)
+                        self.serviceDelegate.requestSuccess(items: items)
+                    
+                    case .error(let error):
+                        self.serviceDelegate.requestFailed(error: error)
+                }
+                
+            })
         }
+    }
+    
+    func updateItem(items: [Codable]) {
+        self.items.append(contentsOf: items)
     }
 }

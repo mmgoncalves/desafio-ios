@@ -17,7 +17,7 @@ class PullRequestDelegate: NSObject, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let pullRequest = viewModel.item(atIndexPath: indexPath) as? PullRequestEntity, let url = URL(string: pullRequest.url) {
+        if let pullRequest = viewModel.item(atIndexPath: indexPath) as? PullRequest, let url = URL(string: pullRequest.url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }

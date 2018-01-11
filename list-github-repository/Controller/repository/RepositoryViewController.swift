@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import CoreData
 import SVProgressHUD
 
-class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResultsControllerDelegate, RepositoryViewControllerDelegate {
+class RepositoryViewController: UIViewController, ServiceDelegate, RepositoryViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: RepositoryViewModel!
-    private var managedObjectContext: NSManagedObjectContext!
+    private var viewModel: RepositoryViewModel?
     private var tableViewDelegate: RepositoryDelegate?
     private var tableViewDataSource: RepositoryDataSource?
     
@@ -28,37 +26,37 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
     }
 
     private func setupViewModel() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        self.managedObjectContext = appDelegate?.persistentContainer.viewContext
         
-        self.viewModel = RepositoryViewModel(context: self.managedObjectContext)
-        self.viewModel.serviceDelegate = self
-        self.viewModel.fetchResultControllerDelegate = self
+        self.viewModel = RepositoryViewModel()
+        self.viewModel?.serviceDelegate = self
         
-        self.viewModel.initializeFetchResultsController()
-        self.startActivityIndicator(numberOfObjects: self.viewModel.numberOfRows())
+        self.startActivityIndicator(numberOfObjects: (self.viewModel?.numberOfRows())!)
     }
     
     private func setupTableViewDelegate() {
-        self.tableViewDelegate = RepositoryDelegate(viewModel: viewModel, delegate: self)
+        self.tableViewDelegate = RepositoryDelegate(viewModel: viewModel!, delegate: self)
         self.tableView.delegate = self.tableViewDelegate
     }
     
     private func setupTableViewDataSource() {
-        self.tableViewDataSource = RepositoryDataSource(viewModel: viewModel)
+        self.tableViewDataSource = RepositoryDataSource(viewModel: viewModel!)
         self.tableView.dataSource = self.tableViewDataSource
     }
     
     //MARK: ServiceDelegate
-    func onFinish() {
-        self.viewModel.initializeFetchResultsController()
+    func requestSuccess(items: [Codable]) -> Void {
+        viewModel?.updateItem(items: items)
         self.tableView.reloadData()
         self.dismissActivityIndicator()
     }
     
+    func requestFailed(error: AppError) -> Void {
+        self.showMessage(by: error)
+    }
+    
     //MARK: RepositoryViewControllerDelegate
     func scrolledToTheEndOfTableView() {
-        viewModel.fetchRequest()
+        viewModel?.fetchRequest()
         
         let ActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         ActivityIndicator.startAnimating()
@@ -68,14 +66,13 @@ class RepositoryViewController: UIViewController, ServiceDelegate, NSFetchedResu
     }
     
     func selectedItem(atIndexPath: IndexPath) {
-        guard let repository = viewModel.item(atIndexPath: atIndexPath) as? RepositoryEntity else {
+        guard let repository = viewModel?.item(atIndexPath: atIndexPath) as? Repository else {
             self.showMessage(by: GenericError.cellNotSelected)
             return
         }
         
         let destinationViewController = StoryboardScene.Main.pullRequestViewController.instantiate()
         
-        destinationViewController.managedObjectContext = self.managedObjectContext
         destinationViewController.repository = repository
         
         navigationController?.pushViewController(destinationViewController, animated: true)
