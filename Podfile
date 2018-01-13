@@ -8,6 +8,8 @@ target 'list-github-repository' do
   pod 'Kingfisher', '~> 4.0'
   pod 'SVProgressHUD', '~> 2.2'
   pod 'SwiftGen', '~> 5.2'
+  pod 'SnapKit', '~> 4.0'
+
   # Pods for list-github-repository
 
   target 'list-github-repositoryTests' do

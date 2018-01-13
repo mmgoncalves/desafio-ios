@@ -42,6 +42,7 @@
 		C37C05B71FBA9F0D00FDEDF0 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C05B61FBA9F0D00FDEDF0 /* UIViewController+Additions.swift */; };
 		C3A496DB1FB8F4C50029AC6F /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */; };
 		C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */; };
+		C3C1FC39200AAD47004851CF /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1FC38200AAD47004851CF /* RepoViewController.swift */; };
 		C3C456451FB7279800FCF32A /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456441FB7279800FCF32A /* RepositoryViewController.swift */; };
 		C3C456471FB727AC00FCF32A /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456461FB727AC00FCF32A /* PullRequestViewController.swift */; };
 		C3CF60CB20067F6F0078162C /* SwiftGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF60CA20067F6F0078162C /* SwiftGen.swift */; };
@@ -123,6 +124,7 @@
 		C37C05B61FBA9F0D00FDEDF0 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewCell.swift; sourceTree = "<group>"; };
+		C3C1FC38200AAD47004851CF /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		C3C456441FB7279800FCF32A /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		C3C456461FB727AC00FCF32A /* PullRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewController.swift; sourceTree = "<group>"; };
 		C3CF60CA20067F6F0078162C /* SwiftGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGen.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				C3C456421FB7273700FCF32A /* repository */,
 				C3C456431FB7275300FCF32A /* pullRequest */,
+				C3C1FC38200AAD47004851CF /* RepoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -619,12 +622,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -737,6 +742,7 @@
 				C3554A8B200537D3006B6864 /* RepositoryDataSource.swift in Sources */,
 				C3E128B41FB4F999003AEB13 /* PullRequest.swift in Sources */,
 				C35964041FB5421300FDE4D3 /* Errors.swift in Sources */,
+				C3C1FC39200AAD47004851CF /* RepoViewController.swift in Sources */,
 				C35963F71FB5257100FDE4D3 /* NSManagedObjectContext+Additions.swift in Sources */,
 				C33A84361FB67ED000788FC7 /* RepositoryViewModel.swift in Sources */,
 				C3C456451FB7279800FCF32A /* RepositoryViewController.swift in Sources */,
