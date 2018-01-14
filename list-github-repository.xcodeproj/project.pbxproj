@@ -43,6 +43,7 @@
 		C3A496DB1FB8F4C50029AC6F /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */; };
 		C3A496DD1FB8F4D90029AC6F /* PullRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */; };
 		C3C1FC39200AAD47004851CF /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1FC38200AAD47004851CF /* RepoViewController.swift */; };
+		C3C1FC3D200AEEF1004851CF /* TmpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C1FC3C200AEEF1004851CF /* TmpViewModel.swift */; };
 		C3C456451FB7279800FCF32A /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456441FB7279800FCF32A /* RepositoryViewController.swift */; };
 		C3C456471FB727AC00FCF32A /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C456461FB727AC00FCF32A /* PullRequestViewController.swift */; };
 		C3CF60CB20067F6F0078162C /* SwiftGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF60CA20067F6F0078162C /* SwiftGen.swift */; };
@@ -125,6 +126,7 @@
 		C3A496DA1FB8F4C50029AC6F /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		C3A496DC1FB8F4D90029AC6F /* PullRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestTableViewCell.swift; sourceTree = "<group>"; };
 		C3C1FC38200AAD47004851CF /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		C3C1FC3C200AEEF1004851CF /* TmpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmpViewModel.swift; sourceTree = "<group>"; };
 		C3C456441FB7279800FCF32A /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		C3C456461FB727AC00FCF32A /* PullRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestViewController.swift; sourceTree = "<group>"; };
 		C3CF60CA20067F6F0078162C /* SwiftGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGen.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				C33A84351FB67ED000788FC7 /* RepositoryViewModel.swift */,
 				C33A843A1FB68AA700788FC7 /* PullRequestViewModel.swift */,
+				C3C1FC3C200AEEF1004851CF /* TmpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				C3E128B81FB4F9DC003AEB13 /* Owner.swift in Sources */,
 				C3554A8F20053FC6006B6864 /* GenericViewModel.swift in Sources */,
 				C3E128AD1FB4F578003AEB13 /* StubJSONPullRequest.swift in Sources */,
+				C3C1FC3D200AEEF1004851CF /* TmpViewModel.swift in Sources */,
 				C35963FE1FB531FC00FDE4D3 /* RepositoryItem.swift in Sources */,
 				C35964061FB5430F00FDE4D3 /* Generic.swift in Sources */,
 				C33A843B1FB68AA700788FC7 /* PullRequestViewModel.swift in Sources */,
