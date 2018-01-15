@@ -34,14 +34,43 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     }
     
     private func setupViews() {
-        self.backgroundColor = UIColor.darkGray
-        self.translatesAutoresizingMaskIntoConstraints = false
         
+//        contentView.backgroundColor = UIColor.yellow
+//        contentView.snp.makeConstraints { (make) in
+//            make.height.equalTo(160)
+//            make.trailing.equalToSuperview()
+//            make.leading.equalToSuperview()
+//        }
         
-        contentView.snp.makeConstraints { (make) in
-            make.height.equalTo(160)
+        self.addSubview(mainStackView)
+
+        mainStackView.snp.makeConstraints { (make) in
+            make.trailing.equalTo(contentView)
+            make.leading.equalTo(contentView).offset(20)
+            make.top.equalTo(contentView).offset(20)
+            make.bottom.equalTo(contentView).offset(20)
         }
         
+        row1StackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        avatar.snp.makeConstraints { (make) in
+            make.height.equalTo(80)
+            make.width.equalTo(80)
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        titleBodyStackView.snp.makeConstraints { (make) in
+            make.right.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.width.equalTo(100)
+            make.height.equalTo(21)
+        }
     }
 
     func configure(objectAssociated: ObjectAssociated) -> Void {
@@ -57,15 +86,20 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     
     lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fill
         stackView.addSubview(row1StackView)
-        stackView.addSubview(row2StackView)
+//        stackView.addSubview(row2StackView)
         return stackView
     }()
     
     lazy var row1StackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 20
         stackView.addSubview(avatar)
         stackView.addSubview(titleBodyStackView)
         return stackView
@@ -73,12 +107,18 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     
     lazy var avatar: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "logo")
+        image.contentMode = .scaleAspectFit
+        image.layer.cornerRadius = 40
+        image.layer.masksToBounds = true
         return image
     }()
     
     lazy var titleBodyStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
         stackView.addSubview(titleLabel)
         stackView.addSubview(bodyLabel)
         return stackView
@@ -87,18 +127,20 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.textColor = UIColor(hex: "5B98C4")
+        title.text = "Title"
         
         return title
     }()
     
     lazy var bodyLabel: UILabel = {
         let body = UILabel()
+        body.text = "Body"
         return body
     }()
     
     lazy var row2StackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.addSubview(authorLabel)
         stackView.addSubview(starStackView)
         stackView.addSubview(forkStackView)
@@ -112,7 +154,7 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     
     lazy var starStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.addSubview(starIcon)
         stackView.addSubview(numberOfStarsLabel)
         return stackView
@@ -120,7 +162,7 @@ class RepositoryTableViewCell: UITableViewCell, ReusableIdentifier, CellProtocol
     
     lazy var forkStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.addSubview(forkIcon)
         stackView.addSubview(numberOfForksLabel)
         return stackView

@@ -32,4 +32,8 @@ class RepositoryDelegate: NSObject, UITableViewDelegate {
             self.delegate.scrolledToTheEndOfTableView()
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
 }
