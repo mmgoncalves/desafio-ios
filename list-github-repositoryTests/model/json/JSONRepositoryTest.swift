@@ -25,25 +25,25 @@ class JSONRepositoryTest: XCTestCase {
         let jsonData = StubJSONRepository.getData()
         
         do {
-            let jsonRepositoryItem = try JSONDecoder().decode(JSONRepositoryItem.self, from: jsonData)
+            let repositoryItem = try JSONDecoder().decode(RepositoryItem.self, from: jsonData)
             
-            XCTAssertNotNil(jsonRepositoryItem, "JsonRepositoryItem should not be nil")
-            XCTAssertEqual(jsonRepositoryItem.items.count, 1)
-            let jsonRepository = jsonRepositoryItem.items.first
+            XCTAssertNotNil(repositoryItem, "JsonRepositoryItem should not be nil")
+            XCTAssertEqual(repositoryItem.items.count, 1)
+            let repository = repositoryItem.items.first
             
-            XCTAssertNotNil(jsonRepository)
-            XCTAssertNotNil(jsonRepository?.name)
-            XCTAssertNotNil(jsonRepository?.id)
-            XCTAssertNotNil(jsonRepository?.full_name)
-            XCTAssertNotNil(jsonRepository?.stargazers_count)
-            XCTAssertNotNil(jsonRepository?.forks_count)
-            XCTAssertNotNil(jsonRepository?.description)
-            XCTAssertNotNil(jsonRepository?.owner)
+            XCTAssertNotNil(repository)
+            XCTAssertNotNil(repository?.name)
+            XCTAssertNotNil(repository?.id)
+            XCTAssertNotNil(repository?.fullName)
+            XCTAssertNotNil(repository?.stars)
+            XCTAssertNotNil(repository?.forks)
+            XCTAssertNotNil(repository?.body)
+            XCTAssertNotNil(repository?.owner)
             
-            let jsonOwner = jsonRepository?.owner
-            XCTAssertNotNil(jsonOwner?.login)
-            XCTAssertNotNil(jsonOwner?.avatar_url)
-            XCTAssertNotNil(jsonOwner?.id)
+            let owner = repository?.owner
+            XCTAssertNotNil(owner?.login)
+            XCTAssertNotNil(owner?.avatarUrl)
+            XCTAssertNotNil(owner?.id)
             
         } catch {
             XCTFail("parse Json to object failed. Error description: \(error)")

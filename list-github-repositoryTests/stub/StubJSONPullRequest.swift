@@ -20,8 +20,8 @@ struct StubJSONPullRequest {
         let jsonData = StubJSONPullRequest.getData()
         
         do {
-            let jsonPullRequests = try JSONDecoder().decode([PullRequest].self, from: jsonData)
-            return jsonPullRequests
+            let pullRequests = try JSONDecoder().decode([PullRequest].self, from: jsonData)
+            return pullRequests
         } catch {
             fatalError("Parse json to object failed")
         }

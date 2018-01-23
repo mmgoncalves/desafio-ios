@@ -20,8 +20,8 @@ struct StubJSONRepository {
         let jsonData = StubJSONRepository.getData()
         
         do {
-            let jsonRepositoryItem = try JSONDecoder().decode(RepositoryItem.self, from: jsonData)
-            return jsonRepositoryItem.items
+            let repositoryItem = try JSONDecoder().decode(RepositoryItem.self, from: jsonData)
+            return repositoryItem.items
         } catch {
             fatalError("Parse json to object failed. Error: \(error)")
         }

@@ -25,16 +25,16 @@ class JSONPullRequestTest: XCTestCase {
         let jsonData = StubJSONPullRequest.getData()
         
         do {
-            let jsonPullRequest = try JSONDecoder().decode([JSONPullRequest].self, from: jsonData)
+            let pullRequest = try JSONDecoder().decode([PullRequest].self, from: jsonData)
             
-            XCTAssertNotNil(jsonPullRequest, "jsonPullRequest should not be nil")
+            XCTAssertNotNil(pullRequest, "jsonPullRequest should not be nil")
             
-            XCTAssertNotNil(jsonPullRequest.first?.body)
-            XCTAssertNotNil(jsonPullRequest.first?.title)
-            XCTAssertNotNil(jsonPullRequest.first?.id)
-            XCTAssertNotNil(jsonPullRequest.first?.created_at)
-            XCTAssertNotNil(jsonPullRequest.first?.html_url)
-            XCTAssertNotNil(jsonPullRequest.first?.head)
+            XCTAssertNotNil(pullRequest.first?.body)
+            XCTAssertNotNil(pullRequest.first?.title)
+            XCTAssertNotNil(pullRequest.first?.id)
+            XCTAssertNotNil(pullRequest.first?.createdAt)
+            XCTAssertNotNil(pullRequest.first?.url)
+            XCTAssertNotNil(pullRequest.first?.information)
         } catch {
             XCTFail("Parse json to object failed. Error description: \(error)")
         }
