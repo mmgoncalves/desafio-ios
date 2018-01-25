@@ -8,17 +8,18 @@
 
 import Alamofire
 
-struct RepositoryService {
- 
-    static func makeRequest(
+struct RepositoryService: Service {
+    func makeRequest(forRepository repository: Repository, completion: @escaping RequestResult) {}
+
+    func makeRequest(
         withPage page: Int,
-        completion: @escaping (_ result: Result) -> Void)
+        completion: @escaping RequestResult)
     {
     
         Alamofire.request(Route.repository(withPage: page).get, method: .get)
             .validate()
             .responseJSON { (dataResponse) in
-            
+
                 guard dataResponse.result.isSuccess, let data = dataResponse.data else {
                     let msgError = dataResponse.result.error?.localizedDescription
                     let appError = RepositoryError.serviceResponse(localizedError: msgError ?? "")
@@ -27,7 +28,7 @@ struct RepositoryService {
                     completion(result)
                     return
                 }
-                
+
                 do {
                     let repositories = try JSONDecoder().decode(RepositoryItem.self, from: data)
                     let result = Result.success(items: repositories.items)

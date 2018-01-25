@@ -13,6 +13,8 @@ target 'list-github-repository' do
   target 'list-github-repositoryTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick', '~> 1.2'
+    pod 'Nimble', '~> 7.0'
   end
 
   target 'list-github-repositoryUITests' do

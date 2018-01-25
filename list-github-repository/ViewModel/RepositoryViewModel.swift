@@ -11,18 +11,21 @@ import Foundation
 class RepositoryViewModel: GenericViewModel {
     
     var items: [Codable] = []
+
+    private let service: Service
+    private var serviceDelegate: ServiceDelegate!
+    private var lastPage: Int = 1
     
-    var serviceDelegate: ServiceDelegate!
-    var lastPage: Int = 1
-    
-    init() {
+    init(service: Service, serviceDelegate: ServiceDelegate) {
+        self.service = service
+        self.serviceDelegate = serviceDelegate
         self.fetchRequest()
     }
     
     func fetchRequest() {
         
         if Generic.isConnectedToNetwork() {
-            RepositoryService.makeRequest(withPage: self.lastPage, completion: { (result) in
+            self.service.makeRequest(withPage: self.lastPage, completion: { (result) in
                 
                 switch result {
                 case .success(let items):

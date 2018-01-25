@@ -8,6 +8,13 @@
 
 import Foundation
 
+protocol Service {
+    func makeRequest(withPage page: Int, completion: @escaping RequestResult) -> Void
+    func makeRequest(forRepository repository: Repository, completion: @escaping RequestResult) -> Void
+}
+
+typealias RequestResult = (_ result: Result) -> Void
+
 enum Result {
     case success(items: [Codable])
     case error(AppError)

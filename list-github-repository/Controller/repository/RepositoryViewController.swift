@@ -26,9 +26,8 @@ class RepositoryViewController: UIViewController, ServiceDelegate, RepositoryVie
     }
 
     private func setupViewModel() {
-        
-        self.viewModel = RepositoryViewModel()
-        self.viewModel?.serviceDelegate = self
+        let service = RepositoryService()
+        self.viewModel = RepositoryViewModel(service: service, serviceDelegate: self)
         
         self.startActivityIndicator(numberOfObjects: (self.viewModel?.numberOfRows())!)
     }

@@ -15,18 +15,20 @@ class PullRequestViewModel: GenericViewModel {
     var pullRequests: [PullRequest]?
     private var serviceDelegate: ServiceDelegate
     private var repository: Repository
+    private let service: Service
     
-    init(repository: Repository, serviceDelegate: ServiceDelegate) {
+    init(repository: Repository, service: Service, serviceDelegate: ServiceDelegate) {
         
         self.repository = repository
+        self.service = service
         self.serviceDelegate = serviceDelegate
-        
+
         self.fetchRequest()
     }
     
     func fetchRequest() {
         if Generic.isConnectedToNetwork() {
-            PullRequestService.makeRequest(forRepository: self.repository, completion: { (result) in
+            self.service.makeRequest(forRepository: self.repository, completion: { (result) in
                 
                 switch result {
                     case .success(let items):

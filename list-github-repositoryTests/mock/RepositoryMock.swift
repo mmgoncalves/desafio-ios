@@ -10,7 +10,7 @@ import Foundation
 @testable import list_github_repository
 
 struct RepositoryMock {
-    static func get() -> Repository{
+    static func get() -> Repository {
         
         let owner = Owner(login: "login", id: 2, avatarUrl: "url")
         let repository = Repository(id: 1, name: "Joao", fullName: "Joao da Silva", stars: 11, forks: 22, body: "Body", owner: owner)

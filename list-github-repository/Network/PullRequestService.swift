@@ -8,11 +8,13 @@
 
 import Alamofire
 
-struct PullRequestService {
+struct PullRequestService: Service {
+
+    func makeRequest(withPage page: Int, completion: @escaping RequestResult) {}
     
-    static func makeRequest(
+    func makeRequest(
         forRepository repository: Repository,
-        completion: @escaping (_ result: Result) -> Void)
+        completion: @escaping RequestResult)
     {
         
         Alamofire.request(Route.pullRequests(projectName: repository.fullName).get, method: .get)
