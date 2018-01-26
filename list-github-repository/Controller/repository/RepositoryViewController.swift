@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class RepositoryViewController: UIViewController, ServiceDelegate, RepositoryViewControllerDelegate {
     

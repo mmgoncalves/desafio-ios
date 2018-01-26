@@ -11,6 +11,7 @@ import Foundation
 
 struct PullRequestMock {
     static func get(forRepository: Repository) -> PullRequest {
+        let repository = RepositoryMock.get()
         let owner = Owner(login: "Login owner", id: 3, avatarUrl: "avatar url")
         let information = Head(owner: owner, repository: repository)
         let pullRequest = PullRequest(url: "URL", id: 2, title: "Title", body: "", createdAt: "", information: information)
