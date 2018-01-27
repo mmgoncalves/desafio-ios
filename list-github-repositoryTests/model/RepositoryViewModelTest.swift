@@ -19,7 +19,7 @@ class RepositoryTest: XCTestCase {
 
         super.setUp()
 
-        self.sut = RepositoryViewModel()
+//        self.sut = RepositoryViewModel()
     }
     
     override func tearDown() {

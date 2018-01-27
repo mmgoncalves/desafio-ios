@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Nimble
 @testable import list_github_repository
 
 class JSONPullRequestTest: XCTestCase {
@@ -27,14 +28,14 @@ class JSONPullRequestTest: XCTestCase {
         do {
             let pullRequest = try JSONDecoder().decode([PullRequest].self, from: jsonData)
             
-            XCTAssertNotNil(pullRequest, "jsonPullRequest should not be nil")
-            
-            XCTAssertNotNil(pullRequest.first?.body)
-            XCTAssertNotNil(pullRequest.first?.title)
-            XCTAssertNotNil(pullRequest.first?.id)
-            XCTAssertNotNil(pullRequest.first?.createdAt)
-            XCTAssertNotNil(pullRequest.first?.url)
-            XCTAssertNotNil(pullRequest.first?.information)
+            expect(pullRequest).toNot(beNil(), description: "jsonPullRequest should not be nil")
+
+            expect(pullRequest.first?.body).toNot(beNil())
+            expect(pullRequest.first?.title).toNot(beNil())
+            expect(pullRequest.first?.id).toNot(beNil())
+            expect(pullRequest.first?.createdAt).toNot(beNil())
+            expect(pullRequest.first?.url).toNot(beNil())
+            expect(pullRequest.first?.information).toNot(beNil())
         } catch {
             XCTFail("Parse json to object failed. Error description: \(error)")
         }

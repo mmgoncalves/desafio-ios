@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Nimble
 @testable import list_github_repository
 
 class JSONRepositoryTest: XCTestCase {
@@ -27,18 +28,19 @@ class JSONRepositoryTest: XCTestCase {
         do {
             let repositoryItem = try JSONDecoder().decode(RepositoryItem.self, from: jsonData)
             
-            XCTAssertNotNil(repositoryItem, "JsonRepositoryItem should not be nil")
-            XCTAssertEqual(repositoryItem.items.count, 1)
+            expect(repositoryItem).toNot(beNil(), description: "JsonRepositoryItem should not be nil")
+            expect(repositoryItem.items.count).to(equal(1))
+            
             let repository = repositoryItem.items.first
             
-            XCTAssertNotNil(repository)
-            XCTAssertNotNil(repository?.name)
-            XCTAssertNotNil(repository?.id)
-            XCTAssertNotNil(repository?.fullName)
-            XCTAssertNotNil(repository?.stars)
-            XCTAssertNotNil(repository?.forks)
-            XCTAssertNotNil(repository?.body)
-            XCTAssertNotNil(repository?.owner)
+            expect(repository).toNot(beNil())
+            expect(repository?.name).toNot(beNil())
+            expect(repository?.id).toNot(beNil())
+            expect(repository?.fullName).toNot(beNil())
+            expect(repository?.stars).toNot(beNil())
+            expect(repository?.forks).toNot(beNil())
+            expect(repository?.body).toNot(beNil())
+            expect(repository?.owner).toNot(beNil())
             
             let owner = repository?.owner
             XCTAssertNotNil(owner?.login)
