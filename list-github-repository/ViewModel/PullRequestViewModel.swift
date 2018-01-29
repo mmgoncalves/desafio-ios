@@ -22,8 +22,6 @@ class PullRequestViewModel: GenericViewModel {
         self.repository = repository
         self.service = service
         self.serviceDelegate = serviceDelegate
-
-        self.fetchRequest()
     }
     
     func fetchRequest() {

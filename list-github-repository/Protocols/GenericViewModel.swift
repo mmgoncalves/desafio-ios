@@ -33,6 +33,10 @@ extension GenericViewModel {
     }
     
     func item(atIndexPath indexPath: IndexPath) -> Codable? {
-        return items[indexPath.row] ?? nil
+        guard self.items.count > 0 else {
+            return nil
+        }
+
+        return self.items[indexPath.row]
     }
 }

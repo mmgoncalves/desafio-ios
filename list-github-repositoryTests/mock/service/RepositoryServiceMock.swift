@@ -19,3 +19,14 @@ struct RepositoryServiceMock: Service {
         completion(result)
     }
 }
+
+struct RepositoryServiceFailMock: Service {
+    func makeRequest(forRepository repository: Repository, completion: @escaping RequestResult) {}
+
+    func makeRequest(withPage page: Int, completion: @escaping RequestResult) {
+        let error = RepositoryError.serviceResponse(localizedError: "Some error here")
+        let result = Result.error(error)
+
+        completion(result)
+    }
+}

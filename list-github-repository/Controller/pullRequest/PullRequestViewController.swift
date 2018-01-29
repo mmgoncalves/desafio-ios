@@ -41,6 +41,7 @@ class PullRequestViewController: UIViewController, ServiceDelegate {
     private func setupViewModel() {
         let service = PullRequestService()
         self.viewModel = PullRequestViewModel(repository: repository!, service: service, serviceDelegate: self)
+        self.viewModel?.fetchRequest()
         
         self.startActivityIndicator(numberOfObjects: (self.viewModel?.numberOfRows())!)
     }

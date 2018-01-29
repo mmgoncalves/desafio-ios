@@ -19,7 +19,6 @@ class RepositoryViewModel: GenericViewModel {
     init(service: Service, serviceDelegate: ServiceDelegate) {
         self.service = service
         self.serviceDelegate = serviceDelegate
-        self.fetchRequest()
     }
     
     func fetchRequest() {
