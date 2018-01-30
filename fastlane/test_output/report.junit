@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='list-github-repositoryTests.xctest' tests='12' failures='0'>
+  <testsuite name='list_github_repositoryUITests.list_github_repositoryUITests' tests='1' failures='0'>
+    <testcase classname='list_github_repositoryUITests.list_github_repositoryUITests' name='testExample' time='6.857'/>
+  </testsuite>
+  <testsuite name='list_github_repositoryTests.JSONPullRequestTest' tests='1' failures='0'>
+    <testcase classname='list_github_repositoryTests.JSONPullRequestTest' name='test_should_map_jsonPullRequest' time='0.024'/>
+  </testsuite>
+  <testsuite name='list_github_repositoryTests.JSONRepositoryTest' tests='1' failures='0'>
+    <testcase classname='list_github_repositoryTests.JSONRepositoryTest' name='test_should_map_jsonRepository' time='0.004'/>
+  </testsuite>
+  <testsuite name='list_github_repositoryTests.PullRequestViewModelTest' tests='4' failures='0'>
+    <testcase classname='list_github_repositoryTests.PullRequestViewModelTest' name='test_items_should_be_not_nil' time='0.006'/>
+    <testcase classname='list_github_repositoryTests.PullRequestViewModelTest' name='test_items_should_be_updatable' time='0.003'/>
+    <testcase classname='list_github_repositoryTests.PullRequestViewModelTest' name='test_number_of_sections_and_rows' time='0.002'/>
+    <testcase classname='list_github_repositoryTests.PullRequestViewModelTest' name='test_service_error' time='0.008'/>
+  </testsuite>
+  <testsuite name='list_github_repositoryTests.RepositoryTest' tests='5' failures='0'>
+    <testcase classname='list_github_repositoryTests.RepositoryTest' name='test_find_item_at_indexPath' time='0.008'/>
+    <testcase classname='list_github_repositoryTests.RepositoryTest' name='test_items_Should_be_equal_1' time='0.005'/>
+    <testcase classname='list_github_repositoryTests.RepositoryTest' name='test_items_should_be_updatable' time='0.002'/>
+    <testcase classname='list_github_repositoryTests.RepositoryTest' name='test_number_of_sections_and_rows' time='0.003'/>
+    <testcase classname='list_github_repositoryTests.RepositoryTest' name='test_service_error' time='0.002'/>
+  </testsuite>
+</testsuites>
